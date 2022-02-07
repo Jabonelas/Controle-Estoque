@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaidaNF));
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
-            this.txtBuscarCodItem_NF = new Guna.UI.WinForms.GunaTextBox();
+            this.txtSaidaNF_SaidaNF = new Guna.UI.WinForms.GunaTextBox();
             this.lblBuscarCodItem_NF = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel1 = new Guna.UI.WinForms.GunaLabel();
-            this.txtSaida_CodItem = new Guna.UI.WinForms.GunaTextBox();
+            this.txtSaidaNF_CodItem = new Guna.UI.WinForms.GunaTextBox();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.txtSaidaNF_Descricao = new Guna.UI.WinForms.GunaTextBox();
@@ -99,22 +99,22 @@
             this.gunaControlBox2.Size = new System.Drawing.Size(45, 29);
             this.gunaControlBox2.TabIndex = 2;
             // 
-            // txtBuscarCodItem_NF
+            // txtSaidaNF_SaidaNF
             // 
-            this.txtBuscarCodItem_NF.BaseColor = System.Drawing.Color.White;
-            this.txtBuscarCodItem_NF.BorderColor = System.Drawing.Color.Silver;
-            this.txtBuscarCodItem_NF.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscarCodItem_NF.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtBuscarCodItem_NF.FocusedBorderColor = System.Drawing.Color.Gray;
-            this.txtBuscarCodItem_NF.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBuscarCodItem_NF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscarCodItem_NF.Location = new System.Drawing.Point(114, 33);
-            this.txtBuscarCodItem_NF.Name = "txtBuscarCodItem_NF";
-            this.txtBuscarCodItem_NF.PasswordChar = '\0';
-            this.txtBuscarCodItem_NF.SelectedText = "";
-            this.txtBuscarCodItem_NF.Size = new System.Drawing.Size(234, 32);
-            this.txtBuscarCodItem_NF.TabIndex = 31;
-            this.txtBuscarCodItem_NF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarCodItem_NF_KeyPress);
+            this.txtSaidaNF_SaidaNF.BaseColor = System.Drawing.Color.White;
+            this.txtSaidaNF_SaidaNF.BorderColor = System.Drawing.Color.Silver;
+            this.txtSaidaNF_SaidaNF.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSaidaNF_SaidaNF.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtSaidaNF_SaidaNF.FocusedBorderColor = System.Drawing.Color.Gray;
+            this.txtSaidaNF_SaidaNF.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtSaidaNF_SaidaNF.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaidaNF_SaidaNF.Location = new System.Drawing.Point(114, 33);
+            this.txtSaidaNF_SaidaNF.Name = "txtSaidaNF_SaidaNF";
+            this.txtSaidaNF_SaidaNF.PasswordChar = '\0';
+            this.txtSaidaNF_SaidaNF.SelectedText = "";
+            this.txtSaidaNF_SaidaNF.Size = new System.Drawing.Size(234, 32);
+            this.txtSaidaNF_SaidaNF.TabIndex = 31;
+            this.txtSaidaNF_SaidaNF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscarCodItem_NF_KeyPress);
             // 
             // lblBuscarCodItem_NF
             // 
@@ -136,23 +136,23 @@
             this.gunaLabel1.TabIndex = 34;
             this.gunaLabel1.Text = "Cód. do Item:";
             // 
-            // txtSaida_CodItem
+            // txtSaidaNF_CodItem
             // 
-            this.txtSaida_CodItem.BaseColor = System.Drawing.Color.White;
-            this.txtSaida_CodItem.BorderColor = System.Drawing.Color.Silver;
-            this.txtSaida_CodItem.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSaida_CodItem.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtSaida_CodItem.FocusedBorderColor = System.Drawing.Color.Gray;
-            this.txtSaida_CodItem.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtSaida_CodItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaida_CodItem.HideSelection = false;
-            this.txtSaida_CodItem.Location = new System.Drawing.Point(114, 83);
-            this.txtSaida_CodItem.Name = "txtSaida_CodItem";
-            this.txtSaida_CodItem.PasswordChar = '\0';
-            this.txtSaida_CodItem.SelectedText = "";
-            this.txtSaida_CodItem.Size = new System.Drawing.Size(234, 32);
-            this.txtSaida_CodItem.TabIndex = 35;
-            this.txtSaida_CodItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaida_CodItem_KeyPress);
+            this.txtSaidaNF_CodItem.BaseColor = System.Drawing.Color.White;
+            this.txtSaidaNF_CodItem.BorderColor = System.Drawing.Color.Silver;
+            this.txtSaidaNF_CodItem.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSaidaNF_CodItem.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtSaidaNF_CodItem.FocusedBorderColor = System.Drawing.Color.Gray;
+            this.txtSaidaNF_CodItem.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtSaidaNF_CodItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaidaNF_CodItem.HideSelection = false;
+            this.txtSaidaNF_CodItem.Location = new System.Drawing.Point(114, 83);
+            this.txtSaidaNF_CodItem.Name = "txtSaidaNF_CodItem";
+            this.txtSaidaNF_CodItem.PasswordChar = '\0';
+            this.txtSaidaNF_CodItem.SelectedText = "";
+            this.txtSaidaNF_CodItem.Size = new System.Drawing.Size(234, 32);
+            this.txtSaidaNF_CodItem.TabIndex = 35;
+            this.txtSaidaNF_CodItem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaida_CodItem_KeyPress);
             // 
             // gunaLabel2
             // 
@@ -237,21 +237,21 @@
             // dgvSaidaNF
             // 
             this.dgvSaidaNF.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.dgvSaidaNF.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvSaidaNF.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSaidaNF.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSaidaNF.BackgroundColor = System.Drawing.Color.White;
             this.dgvSaidaNF.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvSaidaNF.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvSaidaNF.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSaidaNF.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSaidaNF.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSaidaNF.ColumnHeadersHeight = 45;
             this.dgvSaidaNF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSaidaNF.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -263,14 +263,14 @@
             this.Column9,
             this.Column6,
             this.Column7});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSaidaNF.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSaidaNF.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSaidaNF.EnableHeadersVisualStyles = false;
             this.dgvSaidaNF.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvSaidaNF.Location = new System.Drawing.Point(14, 341);
@@ -625,11 +625,11 @@
             this.Controls.Add(this.txtSaidaNF_Descricao);
             this.Controls.Add(this.gunaLabel3);
             this.Controls.Add(this.gunaLabel2);
-            this.Controls.Add(this.txtSaida_CodItem);
+            this.Controls.Add(this.txtSaidaNF_CodItem);
             this.Controls.Add(this.gunaLabel1);
             this.Controls.Add(this.btnSaidaNF_BuscarCodItem);
             this.Controls.Add(this.lblBuscarCodItem_NF);
-            this.Controls.Add(this.txtBuscarCodItem_NF);
+            this.Controls.Add(this.txtSaidaNF_SaidaNF);
             this.Controls.Add(this.btnSaidaNF_Confirmar);
             this.Controls.Add(this.btnSaidaNF_Cancelar);
             this.Controls.Add(this.gunaControlBox2);
@@ -654,11 +654,11 @@
         private Guna.UI.WinForms.GunaControlBox gunaControlBox2;
         private Guna.UI.WinForms.GunaAdvenceButton btnSaidaNF_Cancelar;
         private Guna.UI.WinForms.GunaAdvenceButton btnSaidaNF_Confirmar;
-        private Guna.UI.WinForms.GunaTextBox txtBuscarCodItem_NF;
+        private Guna.UI.WinForms.GunaTextBox txtSaidaNF_SaidaNF;
         private Guna.UI.WinForms.GunaLabel lblBuscarCodItem_NF;
         private Guna.UI.WinForms.GunaAdvenceButton btnSaidaNF_BuscarCodItem;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
-        private Guna.UI.WinForms.GunaTextBox txtSaida_CodItem;
+        private Guna.UI.WinForms.GunaTextBox txtSaidaNF_CodItem;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaTextBox txtSaidaNF_Descricao;

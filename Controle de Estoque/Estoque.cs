@@ -13,12 +13,11 @@ namespace Controle_de_Estoque
     public partial class Estoque : Form
     {
 
-        public bool buscarOK;
+        public bool FeitaABuscaEstoque;
         public Estoque()
         {
             InitializeComponent();
             DadosGuardados.listaBancoEstoque = DadosGuardados.getListaBancoEstoque();
-            DadosGuardados.PreencherBanco1();
         }
 
 
@@ -34,17 +33,17 @@ namespace Controle_de_Estoque
                 OpcaoDoUsuario = MessageBox.Show("A NF Não Foi Confimanda, Deseja Salva-la!", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (OpcaoDoUsuario == DialogResult.No)
                 {
-                    int cont = 1;
+                    int contMessageBox_NFREmovidaComSucesso = 1;
 
                     foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
-                        if (itemBancoEstoque.TesteParaEntrada3 == true && itemBancoEstoque.TesteParaEntrada4 == false)
+                        if (itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
                         {
                             foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
-                                if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == DadosGuardados.NotaFiscalSaida.ToString() && itemBancoSaidaNF.TesteParaEntrada5 == false)
+                                if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == DadosGuardados.NotaFiscalSaida.ToString() && itemBancoSaidaNF.TesteParaSaberSeFoiCanceladaSaidaNF == false)
                                 {
-                                    itemBancoSaidaNF.TesteParaEntrada5 = true;
+                                    itemBancoSaidaNF.TesteParaSaberSeFoiCanceladaSaidaNF = true;
 
                                     itemBancoEstoque.Quantidade = itemBancoEstoque.Quantidade + itemBancoSaidaNF.Quantidade;
 
@@ -54,22 +53,22 @@ namespace Controle_de_Estoque
 
                                     DadosGuardados.PassarTela = true;
 
-                                    if (cont == 1)
+                                    if (contMessageBox_NFREmovidaComSucesso == 1)
                                     {
                                         MessageBox.Show("NF Removida com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        cont++;
+                                        contMessageBox_NFREmovidaComSucesso++;
                                     }
                                 }
                                 break;
                             }
                         }
                     }
-                    DadosGuardados.cont1 = 1;
+                    DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                     DadosGuardados.NotaFiscalSaida++;
                 }
                 if (OpcaoDoUsuario == DialogResult.Yes)
                 {
-                    DadosGuardados.cont1 = 1;
+                    DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                     DadosGuardados.NotaFiscalSaida++;
                     DadosGuardados.PassarTela = true;
                     MessageBox.Show("NF Confirmada com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,7 +88,6 @@ namespace Controle_de_Estoque
         {
             dgvEstoque.Rows.Clear();
 
-
             if (txtEstoqueCodBarra.Text == "" || txtEstoqueDestino.Text == "")
             {
                 lblbarra.Text = "*";
@@ -98,40 +96,229 @@ namespace Controle_de_Estoque
             }
             else
             {
-                DadosGuardados.listaBancoEstoque.ForEach(x =>
+                //DadosGuardados.listaBancoEstoque.ForEach(x =>
+                foreach (var x in DadosGuardados.listaBancoEstoque)
+
                 {
-                    if (x.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text && buscarOK == true)
+                    if (x.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text)
                     {
-                        x.Local = txtEstoqueDestino.Text;
 
-                        dgvEstoque.ColumnCount = 8;
 
-                        var rows = new List<string[]>();
-                        string[] row1 = new string[] { x.NotaFiscal.ToString("D6"), x.CodDoProduto.ToString(),
-                        x.Descricao, x.Quantidade.ToString(),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
-                        rows.Add(row1);
-
-                        foreach (string[] item in rows)
+                        foreach (var item in DadosGuardados.listaBancoEstoque)
                         {
-                            dgvEstoque.Rows.Add(item);
+                            if (item.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
+                            {
+                                if (txtEstoqueDestino.Text == "PRODUÇÃO")
+                                {
+                                    if (item.CodDoProduto == x.CodDoProduto && x.CodDeBarra == item.CodDeBarra)
+                                    {
+
+
+                                        txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                                        txtEstoqueDescricao.Text = x.Descricao;
+                                        txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                                        txtEstoqueLote.Text = x.Lote.ToShortDateString().Replace("/", "");
+                                        txtEstoqueQuantidade.Text = x.Quantidade.ToString();
+                                        txtEstoqueLocal.Text = x.Local;
+                                        lblbarra.Text = "";
+
+
+                                        x.Local = txtEstoqueDestino.Text;
+
+                                        dgvEstoque.ColumnCount = 8;
+
+                                        var rows = new List<string[]>();
+                                        string[] row1 = new string[] { x.NotaFiscal.ToString("D6"), x.CodDoProduto.ToString(),
+                                        x.Descricao, x.Quantidade.ToString(),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
+                                        rows.Add(row1);
+
+                                        foreach (string[] item1 in rows)
+                                        {
+                                            dgvEstoque.Rows.Add(item1);
+                                        }
+                                        lblbarra.Text = "";
+                                        lblDestino.Text = "";
+
+                                        FeitaABuscaEstoque = false;
+
+                                        DialogResult OpcaoDoUsuario = new DialogResult();
+                                        OpcaoDoUsuario = MessageBox.Show("Movimentação Realizada Com Sucesso!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        if (OpcaoDoUsuario == DialogResult.OK)
+                                        {
+                                            txtEstoqueCodBarra.Text = "";
+                                            txtEstoqueCodItem.Text = "";
+                                            txtEstoqueDescricao.Text = "";
+                                            txtEstoqueCodItem.Text = "";
+                                            txtEstoqueLote.Text = "";
+                                            txtEstoqueQuantidade.Text = "";
+                                            txtEstoqueLocal.Text = "";
+                                            txtEstoqueDestino.Text = "";
+                                            lblbarra.Text = "";
+                                        }
+
+                                        break;
+                                    }
+                                    else if (item.CodDoProduto == x.CodDoProduto && item.CodDeBarra != x.CodDeBarra)
+                                    {
+
+
+                                        DialogResult OpcaoDoUsuario = new DialogResult();
+                                        OpcaoDoUsuario = MessageBox.Show("Etiqueta Bloqueada por FIFO!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        if (OpcaoDoUsuario == DialogResult.OK)
+                                        {
+                                            txtEstoqueCodBarra.Text = "";
+                                            txtEstoqueCodItem.Text = "";
+                                            txtEstoqueDescricao.Text = "";
+                                            txtEstoqueCodItem.Text = "";
+                                            txtEstoqueLote.Text = "";
+                                            txtEstoqueQuantidade.Text = "";
+                                            txtEstoqueLocal.Text = "";
+                                            lblbarra.Text = "";
+                                        }
+
+                                        FeitaABuscaEstoque = false;
+
+                                        break;
+                                    }
+                                }
+                                else
+                                {
+
+
+                                    txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                                    txtEstoqueDescricao.Text = x.Descricao;
+                                    txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                                    txtEstoqueLote.Text = x.Lote.ToShortDateString().Replace("/", "");
+                                    txtEstoqueQuantidade.Text = x.Quantidade.ToString();
+                                    txtEstoqueLocal.Text = x.Local;
+                                    lblbarra.Text = "";
+
+
+                                    x.Local = txtEstoqueDestino.Text;
+
+                                    dgvEstoque.ColumnCount = 8;
+
+                                    var rows = new List<string[]>();
+                                    string[] row1 = new string[] { x.NotaFiscal.ToString("D6"), x.CodDoProduto.ToString(),
+                                    x.Descricao, x.Quantidade.ToString(),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
+                                    rows.Add(row1);
+
+                                    foreach (string[] item1 in rows)
+                                    {
+                                        dgvEstoque.Rows.Add(item1);
+                                    }
+                                    lblbarra.Text = "";
+                                    lblDestino.Text = "";
+
+
+                                    txtEstoqueCodBarra.Text = "";
+                                    txtEstoqueCodItem.Text = "";
+                                    txtEstoqueDescricao.Text = "";
+                                    txtEstoqueLote.Text = "";
+                                    txtEstoqueQuantidade.Text = "";
+                                    txtEstoqueLocal.Text = "";
+                                    txtEstoqueDestino.Text = "";
+
+                                    FeitaABuscaEstoque = false;
+
+                                    break;
+
+                                }
+                            }
                         }
-                        lblbarra.Text = "";
-                        lblDestino.Text = "";
 
 
-                        txtEstoqueCodBarra.Text = "";
-                        txtEstoqueCodItem.Text = "";
-                        txtEstoqueDescricao.Text = "";
-                        txtEstoqueLote.Text = "";
-                        txtEstoqueQuantidade.Text = "";
-                        txtEstoqueLocal.Text = "";
-                        txtEstoqueDestino.Text = "";
 
-                        buscarOK = false;
 
-                        MessageBox.Show("Movimentação realizada com sucesso!");
+
+
+
+
+
+                        // este já estava no botão de confirmar
+
+
+                        //if (x.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text && FeitaABuscaEstoque == true)
+                        //{
+                        //    x.Local = txtEstoqueDestino.Text;
+
+                        //    dgvEstoque.ColumnCount = 8;
+
+                        //    var rows = new List<string[]>();
+                        //    string[] row1 = new string[] { x.NotaFiscal.ToString("D6"), x.CodDoProduto.ToString(),
+                        //    x.Descricao, x.Quantidade.ToString(),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
+                        //    rows.Add(row1);
+
+                        //    foreach (string[] item in rows)
+                        //    {
+                        //        dgvEstoque.Rows.Add(item);
+                        //    }
+                        //    lblbarra.Text = "";
+                        //    lblDestino.Text = "";
+
+
+                        //    txtEstoqueCodBarra.Text = "";
+                        //    txtEstoqueCodItem.Text = "";
+                        //    txtEstoqueDescricao.Text = "";
+                        //    txtEstoqueLote.Text = "";
+                        //    txtEstoqueQuantidade.Text = "";
+                        //    txtEstoqueLocal.Text = "";
+                        //    txtEstoqueDestino.Text = "";
+
+                        //    FeitaABuscaEstoque = false;
+
+                        //    MessageBox.Show("Movimentação realizada com sucesso!");
+                        //}
+
+
+
+
+
+
+
+
+                        //este é oq estava no botao de busca para fazer o fifo
+
+                        //foreach (var item in DadosGuardados.listaBancoEstoque)
+                        //{
+                        //    if (item.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
+                        //    {
+
+                        //        if (item.CodDoProduto == x.CodDoProduto && x.CodDeBarra == item.CodDeBarra)
+                        //        {
+                        //            txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                        //            txtEstoqueDescricao.Text = x.Descricao;
+                        //            txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                        //            txtEstoqueLote.Text = x.Lote.ToShortDateString().Replace("/", "");
+                        //            txtEstoqueQuantidade.Text = x.Quantidade.ToString();
+                        //            txtEstoqueLocal.Text = x.Local;
+                        //            lblbarra.Text = "";
+
+                        //            FeitaABuscaEstoque = true;
+                        //            MessageBox.Show("ok é o da vez");
+                        //            break;
+                        //        }
+                        //        else if (item.CodDoProduto == x.CodDoProduto && item.CodDeBarra != x.CodDeBarra)
+                        //        {
+                        //            MessageBox.Show("não é o da vez");
+                        //            break;
+                        //        }
+                        //    }
+                        //}
+
+
+
+
+
+
+
+
+
+
+
                     }
-                });
+
+                }//);
             }
         }
 
@@ -158,52 +345,46 @@ namespace Controle_de_Estoque
                 foreach (var x in DadosGuardados.listaBancoEstoque)
                 {
 
-
-
-
-
-
-
-                    if (x.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text)
+                    if (x.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text && x.TesteParaSaberSeFoiFaturadoZerandoAQuant == true)
                     {
-                        foreach (var item in DadosGuardados.listaBancoEstoque)
+                        txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                        txtEstoqueDescricao.Text = x.Descricao;
+                        txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                        txtEstoqueLote.Text = x.Lote.ToShortDateString().Replace("/", "");
+                        txtEstoqueQuantidade.Text = x.Quantidade.ToString();
+                        txtEstoqueLocal.Text = x.Local;
+                        lblbarra.Text = "";
+
+                        FeitaABuscaEstoque = true;
+
+                        DialogResult OpcaoDoUsuario = new DialogResult();
+                        OpcaoDoUsuario = MessageBox.Show("Etiqueja já Faturada!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (OpcaoDoUsuario == DialogResult.OK)
                         {
-                            if (item.CodDoProduto == x.CodDoProduto && x.CodDeBarra == item.CodDeBarra)
-                            {
-                                txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
-                                txtEstoqueDescricao.Text = x.Descricao;
-                                txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
-                                txtEstoqueLote.Text = x.Lote.ToShortDateString().Replace("/", "");
-                                txtEstoqueQuantidade.Text = x.Quantidade.ToString();
-                                txtEstoqueLocal.Text = x.Local;
-                                lblbarra.Text = "";
-
-                                buscarOK = true;
-                                MessageBox.Show("ok é o da vez");
-                                break;
-                            }
-                            else if (item.CodDoProduto == x.CodDoProduto && item.CodDeBarra != x.CodDeBarra)
-                            {
-                                MessageBox.Show("não é o da vez");
-                                break;
-                            }
+                            txtEstoqueCodBarra.Text = "";
+                            txtEstoqueCodItem.Text = "";
+                            txtEstoqueDescricao.Text = "";
+                            txtEstoqueCodItem.Text = "";
+                            txtEstoqueLote.Text = "";
+                            txtEstoqueQuantidade.Text = "";
+                            txtEstoqueLocal.Text = "";
+                            lblbarra.Text = "";
+                            break;
                         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     }
+                    else if (x.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text)
+                    {
+                        txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                        txtEstoqueDescricao.Text = x.Descricao;
+                        txtEstoqueCodItem.Text = x.CodDoProduto.ToString();
+                        txtEstoqueLote.Text = x.Lote.ToShortDateString().Replace("/", "");
+                        txtEstoqueQuantidade.Text = x.Quantidade.ToString();
+                        txtEstoqueLocal.Text = x.Local;
+                        lblbarra.Text = "";
 
+                        FeitaABuscaEstoque = true;
+                        break;
+                    }
                 }//);
             }
         }
@@ -224,5 +405,10 @@ namespace Controle_de_Estoque
         }
 
         #endregion
+
+        private void txtEstoqueCodBarra_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

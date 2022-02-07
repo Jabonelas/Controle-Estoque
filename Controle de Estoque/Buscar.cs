@@ -12,15 +12,16 @@ namespace Controle_de_Estoque
 {
     public partial class Buscar : Form
     {
-        
+
 
         public Buscar()
         {
             InitializeComponent();
             DadosGuardados.listaBancoEstoque = DadosGuardados.getListaBancoEstoque();
-            DadosGuardados.PreencherBanco1();
         }
 
+
+        #region Estoque Load
 
 
         private void Estoque_Load(object sender, EventArgs e)
@@ -35,13 +36,13 @@ namespace Controle_de_Estoque
 
                     foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
-                        if (itemBancoEstoque.TesteParaEntrada3 == true && itemBancoEstoque.TesteParaEntrada4 == false)
+                        if (itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
                         {
                             foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
-                                if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == DadosGuardados.NotaFiscalSaida.ToString() && itemBancoSaidaNF.TesteParaEntrada5 == false)
+                                if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == DadosGuardados.NotaFiscalSaida.ToString() && itemBancoSaidaNF.TesteParaSaberSeFoiCanceladaSaidaNF == false)
                                 {
-                                    itemBancoSaidaNF.TesteParaEntrada5 = true;
+                                    itemBancoSaidaNF.TesteParaSaberSeFoiCanceladaSaidaNF = true;
 
                                     itemBancoEstoque.Quantidade = itemBancoEstoque.Quantidade + itemBancoSaidaNF.Quantidade;
 
@@ -61,12 +62,12 @@ namespace Controle_de_Estoque
                             }
                         }
                     }
-                    DadosGuardados.cont1 = 1;
+                    DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                     DadosGuardados.NotaFiscalSaida++;
                 }
                 if (OpcaoDoUsuario == DialogResult.Yes)
                 {
-                    DadosGuardados.cont1 = 1;
+                    DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                     DadosGuardados.NotaFiscalSaida++;
                     DadosGuardados.PassarTela = true;
                     MessageBox.Show("NF Confirmada com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -74,9 +75,13 @@ namespace Controle_de_Estoque
             }
         }
 
+
+        #endregion
+
+
         private void btnBuscarCodItem_Buscar_Click(object sender, EventArgs e)
         {
-                    dgvBuscar.Rows.Clear();
+            dgvBuscar.Rows.Clear();
             if (txtBuscarCodItem_NF.Text == "")
             {
                 lblErroBuscar.Text = "*";
@@ -86,36 +91,39 @@ namespace Controle_de_Estoque
             {
                 DadosGuardados.listaBancoEstoque.ForEach(x =>
                 {
-
-                    if (x.CodDoProduto.ToString() == txtBuscarCodItem_NF.Text)
+                    if (x.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
                     {
 
-                        dgvBuscar.ColumnCount = 8;
-                        //dgvEstoque.Columns[0].Name = "Nota Fiscal";
-                        //dgvEstoque.Columns[0].Width = 120;
-                        //dgvEstoque.Columns[1].Name = "Codigo do item";
-                        //dgvEstoque.Columns[1].Width = 180;
-                        //dgvEstoque.Columns[2].Name = "Descricção do item";
-                        //dgvEstoque.Columns[2].Width = 380;
-                        //dgvEstoque.Columns[3].Name = "Quantidade";
-                        //dgvEstoque.Columns[3].Width = 110;
-                        //dgvEstoque.Columns[4].Name = "Unidade";
-                        //dgvEstoque.Columns[4].Width = 80;
-                        //dgvEstoque.Columns[4].Name = "Local";
-                        //dgvEstoque.Columns[5].Width = 80;
-                        //dgvEstoque.Columns[5].Name = "Codigo de Barras";
-                        //dgvEstoque.Columns[6].Width = 180;
-
-                        var rows = new List<string[]>();
-                        string[] row1 = new string[] { x.NotaFiscal.ToString("D6"), x.CodDoProduto.ToString(),
-                        x.Descricao, x.Quantidade.ToString (),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
-                        rows.Add(row1);
-
-                        foreach (string[] item in rows)
+                        if (x.CodDoProduto.ToString() == txtBuscarCodItem_NF.Text)
                         {
-                            dgvBuscar.Rows.Add(item);
+
+                            dgvBuscar.ColumnCount = 8;
+                            //dgvEstoque.Columns[0].Name = "Nota Fiscal";
+                            //dgvEstoque.Columns[0].Width = 120;
+                            //dgvEstoque.Columns[1].Name = "Codigo do item";
+                            //dgvEstoque.Columns[1].Width = 180;
+                            //dgvEstoque.Columns[2].Name = "Descricção do item";
+                            //dgvEstoque.Columns[2].Width = 380;
+                            //dgvEstoque.Columns[3].Name = "Quantidade";
+                            //dgvEstoque.Columns[3].Width = 110;
+                            //dgvEstoque.Columns[4].Name = "Unidade";
+                            //dgvEstoque.Columns[4].Width = 80;
+                            //dgvEstoque.Columns[4].Name = "Local";
+                            //dgvEstoque.Columns[5].Width = 80;
+                            //dgvEstoque.Columns[5].Name = "Codigo de Barras";
+                            //dgvEstoque.Columns[6].Width = 180;
+
+                            var rows = new List<string[]>();
+                            string[] row1 = new string[] { x.NotaFiscal.ToString("D6"), x.CodDoProduto.ToString(),
+                        x.Descricao, x.Quantidade.ToString (),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
+                            rows.Add(row1);
+
+                            foreach (string[] item in rows)
+                            {
+                                dgvBuscar.Rows.Add(item);
+                            }
+                            lblErroBuscar.Text = "";
                         }
-                        lblErroBuscar.Text = "";
                     }
                 });
             }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estoque));
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
@@ -61,8 +61,8 @@
             this.lblbarra = new Guna.UI.WinForms.GunaLabel();
             this.txtEstoqueLote = new Guna.UI.WinForms.GunaTextBox();
             this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
-            this.btnEstoqueConfirmar_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.btnEstoqueCodBarra_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btnEstoque_Confirmar = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btnEstoque_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,6 +112,7 @@
             this.txtEstoqueCodBarra.SelectedText = "";
             this.txtEstoqueCodBarra.Size = new System.Drawing.Size(234, 32);
             this.txtEstoqueCodBarra.TabIndex = 3;
+            this.txtEstoqueCodBarra.TextChanged += new System.EventHandler(this.txtEstoqueCodBarra_TextChanged);
             this.txtEstoqueCodBarra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueCodBarra_KeyPress);
             // 
             // gunaLabel2
@@ -245,21 +246,21 @@
             // dgvEstoque
             // 
             this.dgvEstoque.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvEstoque.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvEstoque.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEstoque.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEstoque.BackgroundColor = System.Drawing.Color.White;
             this.dgvEstoque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvEstoque.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvEstoque.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEstoque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEstoque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEstoque.ColumnHeadersHeight = 45;
             this.dgvEstoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEstoque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -271,14 +272,14 @@
             this.Column6,
             this.Column8,
             this.Column7});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEstoque.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEstoque.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEstoque.EnableHeadersVisualStyles = false;
             this.dgvEstoque.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvEstoque.Location = new System.Drawing.Point(16, 383);
@@ -443,77 +444,77 @@
             this.gunaLabel7.TabIndex = 41;
             this.gunaLabel7.Text = "Lote:";
             // 
-            // btnEstoqueConfirmar_Buscar
+            // btnEstoque_Confirmar
             // 
-            this.btnEstoqueConfirmar_Buscar.Animated = true;
-            this.btnEstoqueConfirmar_Buscar.AnimationHoverSpeed = 0.4F;
-            this.btnEstoqueConfirmar_Buscar.AnimationSpeed = 0.03F;
-            this.btnEstoqueConfirmar_Buscar.BackColor = System.Drawing.Color.DimGray;
-            this.btnEstoqueConfirmar_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEstoqueConfirmar_Buscar.BaseColor = System.Drawing.Color.Transparent;
-            this.btnEstoqueConfirmar_Buscar.BorderColor = System.Drawing.Color.Black;
-            this.btnEstoqueConfirmar_Buscar.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.btnEstoqueConfirmar_Buscar.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnEstoqueConfirmar_Buscar.CheckedForeColor = System.Drawing.Color.White;
-            this.btnEstoqueConfirmar_Buscar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEstoqueConfirmar_Buscar.CheckedImage")));
-            this.btnEstoqueConfirmar_Buscar.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btnEstoqueConfirmar_Buscar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEstoqueConfirmar_Buscar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEstoqueConfirmar_Buscar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstoqueConfirmar_Buscar.ForeColor = System.Drawing.Color.White;
-            this.btnEstoqueConfirmar_Buscar.Image = global::Controle_de_Estoque.Properties.Resources.ok;
-            this.btnEstoqueConfirmar_Buscar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnEstoqueConfirmar_Buscar.LineBottom = 4;
-            this.btnEstoqueConfirmar_Buscar.LineColor = System.Drawing.Color.Transparent;
-            this.btnEstoqueConfirmar_Buscar.Location = new System.Drawing.Point(573, 33);
-            this.btnEstoqueConfirmar_Buscar.Name = "btnEstoqueConfirmar_Buscar";
-            this.btnEstoqueConfirmar_Buscar.OnHoverBaseColor = System.Drawing.Color.Transparent;
-            this.btnEstoqueConfirmar_Buscar.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEstoqueConfirmar_Buscar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEstoqueConfirmar_Buscar.OnHoverImage = null;
-            this.btnEstoqueConfirmar_Buscar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEstoqueConfirmar_Buscar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnEstoqueConfirmar_Buscar.Size = new System.Drawing.Size(125, 33);
-            this.btnEstoqueConfirmar_Buscar.TabIndex = 36;
-            this.btnEstoqueConfirmar_Buscar.Text = "Confirmar";
-            this.btnEstoqueConfirmar_Buscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnEstoqueConfirmar_Buscar.Click += new System.EventHandler(this.btnEstoqueConfirmar_Buscar_Click);
+            this.btnEstoque_Confirmar.Animated = true;
+            this.btnEstoque_Confirmar.AnimationHoverSpeed = 0.4F;
+            this.btnEstoque_Confirmar.AnimationSpeed = 0.03F;
+            this.btnEstoque_Confirmar.BackColor = System.Drawing.Color.DimGray;
+            this.btnEstoque_Confirmar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEstoque_Confirmar.BaseColor = System.Drawing.Color.Transparent;
+            this.btnEstoque_Confirmar.BorderColor = System.Drawing.Color.Black;
+            this.btnEstoque_Confirmar.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btnEstoque_Confirmar.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnEstoque_Confirmar.CheckedForeColor = System.Drawing.Color.White;
+            this.btnEstoque_Confirmar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEstoque_Confirmar.CheckedImage")));
+            this.btnEstoque_Confirmar.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnEstoque_Confirmar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEstoque_Confirmar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEstoque_Confirmar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstoque_Confirmar.ForeColor = System.Drawing.Color.White;
+            this.btnEstoque_Confirmar.Image = global::Controle_de_Estoque.Properties.Resources.ok;
+            this.btnEstoque_Confirmar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnEstoque_Confirmar.LineBottom = 4;
+            this.btnEstoque_Confirmar.LineColor = System.Drawing.Color.Transparent;
+            this.btnEstoque_Confirmar.Location = new System.Drawing.Point(573, 33);
+            this.btnEstoque_Confirmar.Name = "btnEstoque_Confirmar";
+            this.btnEstoque_Confirmar.OnHoverBaseColor = System.Drawing.Color.Transparent;
+            this.btnEstoque_Confirmar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEstoque_Confirmar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEstoque_Confirmar.OnHoverImage = null;
+            this.btnEstoque_Confirmar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEstoque_Confirmar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnEstoque_Confirmar.Size = new System.Drawing.Size(125, 33);
+            this.btnEstoque_Confirmar.TabIndex = 36;
+            this.btnEstoque_Confirmar.Text = "Confirmar";
+            this.btnEstoque_Confirmar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEstoque_Confirmar.Click += new System.EventHandler(this.btnEstoqueConfirmar_Buscar_Click);
             // 
-            // btnEstoqueCodBarra_Buscar
+            // btnEstoque_Buscar
             // 
-            this.btnEstoqueCodBarra_Buscar.Animated = true;
-            this.btnEstoqueCodBarra_Buscar.AnimationHoverSpeed = 0.4F;
-            this.btnEstoqueCodBarra_Buscar.AnimationSpeed = 0.03F;
-            this.btnEstoqueCodBarra_Buscar.BackColor = System.Drawing.Color.DimGray;
-            this.btnEstoqueCodBarra_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEstoqueCodBarra_Buscar.BaseColor = System.Drawing.Color.Transparent;
-            this.btnEstoqueCodBarra_Buscar.BorderColor = System.Drawing.Color.Black;
-            this.btnEstoqueCodBarra_Buscar.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.btnEstoqueCodBarra_Buscar.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnEstoqueCodBarra_Buscar.CheckedForeColor = System.Drawing.Color.White;
-            this.btnEstoqueCodBarra_Buscar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEstoqueCodBarra_Buscar.CheckedImage")));
-            this.btnEstoqueCodBarra_Buscar.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btnEstoqueCodBarra_Buscar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEstoqueCodBarra_Buscar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEstoqueCodBarra_Buscar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstoqueCodBarra_Buscar.ForeColor = System.Drawing.Color.White;
-            this.btnEstoqueCodBarra_Buscar.Image = global::Controle_de_Estoque.Properties.Resources.lupa;
-            this.btnEstoqueCodBarra_Buscar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnEstoqueCodBarra_Buscar.LineBottom = 4;
-            this.btnEstoqueCodBarra_Buscar.LineColor = System.Drawing.Color.Transparent;
-            this.btnEstoqueCodBarra_Buscar.Location = new System.Drawing.Point(378, 33);
-            this.btnEstoqueCodBarra_Buscar.Name = "btnEstoqueCodBarra_Buscar";
-            this.btnEstoqueCodBarra_Buscar.OnHoverBaseColor = System.Drawing.Color.Transparent;
-            this.btnEstoqueCodBarra_Buscar.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEstoqueCodBarra_Buscar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEstoqueCodBarra_Buscar.OnHoverImage = null;
-            this.btnEstoqueCodBarra_Buscar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEstoqueCodBarra_Buscar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnEstoqueCodBarra_Buscar.Size = new System.Drawing.Size(85, 32);
-            this.btnEstoqueCodBarra_Buscar.TabIndex = 10;
-            this.btnEstoqueCodBarra_Buscar.Text = "Buscar";
-            this.btnEstoqueCodBarra_Buscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnEstoqueCodBarra_Buscar.Click += new System.EventHandler(this.btnEstoqueCodBarra_Buscar_Click);
+            this.btnEstoque_Buscar.Animated = true;
+            this.btnEstoque_Buscar.AnimationHoverSpeed = 0.4F;
+            this.btnEstoque_Buscar.AnimationSpeed = 0.03F;
+            this.btnEstoque_Buscar.BackColor = System.Drawing.Color.DimGray;
+            this.btnEstoque_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEstoque_Buscar.BaseColor = System.Drawing.Color.Transparent;
+            this.btnEstoque_Buscar.BorderColor = System.Drawing.Color.Black;
+            this.btnEstoque_Buscar.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btnEstoque_Buscar.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnEstoque_Buscar.CheckedForeColor = System.Drawing.Color.White;
+            this.btnEstoque_Buscar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEstoque_Buscar.CheckedImage")));
+            this.btnEstoque_Buscar.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnEstoque_Buscar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEstoque_Buscar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEstoque_Buscar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstoque_Buscar.ForeColor = System.Drawing.Color.White;
+            this.btnEstoque_Buscar.Image = global::Controle_de_Estoque.Properties.Resources.lupa;
+            this.btnEstoque_Buscar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnEstoque_Buscar.LineBottom = 4;
+            this.btnEstoque_Buscar.LineColor = System.Drawing.Color.Transparent;
+            this.btnEstoque_Buscar.Location = new System.Drawing.Point(378, 33);
+            this.btnEstoque_Buscar.Name = "btnEstoque_Buscar";
+            this.btnEstoque_Buscar.OnHoverBaseColor = System.Drawing.Color.Transparent;
+            this.btnEstoque_Buscar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEstoque_Buscar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEstoque_Buscar.OnHoverImage = null;
+            this.btnEstoque_Buscar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEstoque_Buscar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnEstoque_Buscar.Size = new System.Drawing.Size(85, 32);
+            this.btnEstoque_Buscar.TabIndex = 10;
+            this.btnEstoque_Buscar.Text = "Buscar";
+            this.btnEstoque_Buscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnEstoque_Buscar.Click += new System.EventHandler(this.btnEstoqueCodBarra_Buscar_Click);
             // 
             // Estoque
             // 
@@ -523,7 +524,7 @@
             this.Controls.Add(this.gunaLabel7);
             this.Controls.Add(this.txtEstoqueLote);
             this.Controls.Add(this.txtEstoqueDestino);
-            this.Controls.Add(this.btnEstoqueConfirmar_Buscar);
+            this.Controls.Add(this.btnEstoque_Confirmar);
             this.Controls.Add(this.dgvEstoque);
             this.Controls.Add(this.txtEstoqueDescricao);
             this.Controls.Add(this.gunaLabel6);
@@ -532,7 +533,7 @@
             this.Controls.Add(this.gunaLabel4);
             this.Controls.Add(this.gunaLabel3);
             this.Controls.Add(this.txtEstoqueQuantidade);
-            this.Controls.Add(this.btnEstoqueCodBarra_Buscar);
+            this.Controls.Add(this.btnEstoque_Buscar);
             this.Controls.Add(this.txtEstoqueCodItem);
             this.Controls.Add(this.gunaLabel2);
             this.Controls.Add(this.txtEstoqueCodBarra);
@@ -559,7 +560,7 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         private Guna.UI.WinForms.GunaTextBox txtEstoqueCodItem;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
-        private Guna.UI.WinForms.GunaAdvenceButton btnEstoqueCodBarra_Buscar;
+        private Guna.UI.WinForms.GunaAdvenceButton btnEstoque_Buscar;
         private Guna.UI.WinForms.GunaTextBox txtEstoqueQuantidade;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaLabel gunaLabel4;
@@ -568,7 +569,7 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel6;
         private Guna.UI.WinForms.GunaTextBox txtEstoqueDescricao;
         private Guna.UI.WinForms.GunaDataGridView dgvEstoque;
-        private Guna.UI.WinForms.GunaAdvenceButton btnEstoqueConfirmar_Buscar;
+        private Guna.UI.WinForms.GunaAdvenceButton btnEstoque_Confirmar;
         private Guna.UI2.WinForms.Guna2ComboBox txtEstoqueDestino;
         private Guna.UI2.WinForms.Guna2AnimateWindow guna2AnimateWindow1;
         private Guna.UI.WinForms.GunaLabel lblDestino;

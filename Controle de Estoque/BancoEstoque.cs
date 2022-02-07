@@ -21,14 +21,14 @@ namespace Controle_de_Estoque
         public string Local;
         public int CodDeBarra;
         public DateTime Lote;
-        public bool TesteParaEntrada3;
-        public bool TesteParaEntrada4;
+        public bool TesteParaSeFoiFeitaMovimentaçãoNaQuant;
+        public bool TesteParaSaberSeFoiFaturadoZerandoAQuant;
 
 
         public BancoEstoque(int _notaFiscal, string _descricao, string _fornecedor, string _unidadeDeMedia,
             double _quantidade, string _observacao, double _valor, DateTime _emissao, DateTime _lancamento,
-            int _codDoProduto, string _local, int _codDeBarras, DateTime _lote, bool _testeParaEntrada3,
-            bool _testeParaEntrada4)
+            int _codDoProduto, string _local, int _codDeBarras, DateTime _lote, bool _testeParaSeFoiFeitaMovimentaçãoNaQuant,
+            bool _testeParaSaberSeFoiFaturado)
         {
             NotaFiscal = _notaFiscal;
             Descricao = _descricao;
@@ -43,8 +43,8 @@ namespace Controle_de_Estoque
             Local = _local;
             CodDeBarra = _codDeBarras;
             Lote = _lote;
-            TesteParaEntrada3 = _testeParaEntrada3;
-            TesteParaEntrada4 = _testeParaEntrada4;
+            TesteParaSeFoiFeitaMovimentaçãoNaQuant = _testeParaSeFoiFeitaMovimentaçãoNaQuant;
+            TesteParaSaberSeFoiFaturadoZerandoAQuant = _testeParaSaberSeFoiFaturado;
 
 
         }

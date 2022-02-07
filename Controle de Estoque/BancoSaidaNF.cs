@@ -19,7 +19,7 @@ namespace Controle_de_Estoque
         public string Local;
         public int CodDeBarra;
         public DateTime Lote;
-        public bool TesteParaEntrada5;
+        public bool TesteParaSaberSeFoiCanceladaSaidaNF;
 
         public BancoSaidaNF(int _notaFiscalSaida, int _codDoProduto, string _descricao, double _quantidade, string _unidadeDeMedia, string _observacao, double _valor, DateTime _emissao, string _local, int _codDeBarra, DateTime _lote, bool _testeParaEntrada5)
         {
@@ -34,7 +34,7 @@ namespace Controle_de_Estoque
             Local = _local;
             CodDeBarra = _codDeBarra;
             Lote = _lote;
-            TesteParaEntrada5 = _testeParaEntrada5;
+            TesteParaSaberSeFoiCanceladaSaidaNF = _testeParaEntrada5;
         }
     }
 }

@@ -12,11 +12,12 @@ namespace Controle_de_Estoque
 
         public static int NotaFiscalSaida = 0000000001;
 
-        public static int cont1 = 1;
+        public static int contParaGerarNotaFiscalDeSaida = 1;
 
         public static List<BancoEntradaNF> listaNF = new List<BancoEntradaNF>();
 
         public static bool FoiInicializada = false;
+
 
         public static List<BancoSaidaNF> listaBancoSaidaNF = new List<BancoSaidaNF>();
 
@@ -72,33 +73,6 @@ namespace Controle_de_Estoque
 
 
         public static List<BancoEstoque> listaBancoEstoque = new List<BancoEstoque>();
-
-
-        public static void PreencherBanco1()
-        {
-            if (FoiInicializada == false)
-            {
-                listaBancoEstoque = new List<BancoEstoque>()
-              {
-
-                new BancoEstoque(000001,"TELHA ONDULADA FIBROCIMENTO 224 X 110 5MM","IMBRALIT","UN",100,"--",3990.90,new DateTime(2015,01,12),new DateTime(2016,01,12),10,"RECEBIMENTO",0000000001,new DateTime(2016,01,12),false,false),
-                new BancoEstoque(000002,"TELHA ONDULADA FIBROCIMENTO 224 X 110 5MM","IMBRALIT","UN",100,"--",3990.90,new DateTime(2015,01,12),new DateTime(2016,01,13),10,"RECEBIMENTO",0000000002,new DateTime(2016,01,13),false,false),
-                new BancoEstoque(000003,"TELHA ONDULADA FIBROCIMENTO 224 X 110 5MM","IMBRALIT","UN",100,"--",3990.90,new DateTime(2015,01,12),new DateTime(2016,01,14),10,"RECEBIMENTO",0000000003,new DateTime(2016,01,14),false,false),
-                new BancoEstoque(000004,"TELHA ONDULADA FIBROCIMENTO 224 X 110 5MM","IMBRALIT","UN",100,"--",3990.90,new DateTime(2015,01,12),new DateTime(2016,01,15),10,"RECEBIMENTO",0000000004,new DateTime(2016,01,15),false,false),
-                new BancoEstoque(000005,"TELHA ONDULADA FIBROCIMENTO 224 X 110 5MM","IMBRALIT","UN",100,"--",3990.90,new DateTime(2015,01,12),new DateTime(2016,01,16),10,"RECEBIMENTO",0000000005,new DateTime(2016,01,16),false,false),
-
-
-
-
-
-
-                };
-                FoiInicializada = true;
-            }
-        }
-
-
-
 
         public static List<BancoEstoque> getListaBancoEstoque()
         {

@@ -16,9 +16,9 @@ namespace Controle_de_Estoque
         public string Observavao;
         public double Valor;
         public DateTime Emissao;
-        public bool TesteParaEntrada1;
+        public bool TesteParaSaberSeFoiDadoEnatradaBancoEstoque;
         public int CodDoProduto;
-        public bool TesteParaEntrada2;
+        public bool TesteParaDiferenciarItensDaMesmaNF;
         public string Local;
 
 
@@ -34,9 +34,9 @@ namespace Controle_de_Estoque
             Observavao = _observavao;
             Valor = _valor;
             Emissao = _emissao;
-            TesteParaEntrada1 = _testeParaEntrada1;
+            TesteParaSaberSeFoiDadoEnatradaBancoEstoque = _testeParaEntrada1;
             CodDoProduto = _codDoProduto;
-            TesteParaEntrada2 = _testeParaEntrada2;
+            TesteParaDiferenciarItensDaMesmaNF = _testeParaEntrada2;
             Local = _local;
         }
 

@@ -17,11 +17,66 @@ namespace Controle_de_Estoque
         {
             InitializeComponent();
             DadosGuardados.PreencherBanco();
+            DadosGuardados.PreencherBanco1();
         }
+
+        #region Entrada Load
+
         private void EntradaNF_Load(object sender, EventArgs e)
         {
+            if (DadosGuardados.PassarTela == false)
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("A NF Não Foi Confimanda, Deseja Salva-la!", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.No)
+                {
+                    int cont = 1;
 
+                    foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                    {
+                        if (itemBancoEstoque.TesteParaEntrada3 == true && itemBancoEstoque.TesteParaEntrada4 == false)
+                        {
+                            foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
+                            {
+                                if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == DadosGuardados.NotaFiscalSaida.ToString() && itemBancoSaidaNF.TesteParaEntrada5 == false)
+                                {
+                                    itemBancoSaidaNF.TesteParaEntrada5 = true;
+
+                                    itemBancoEstoque.Quantidade = itemBancoEstoque.Quantidade + itemBancoSaidaNF.Quantidade;
+
+                                    DadosGuardados.listaBancoSaidaNF.Remove(itemBancoSaidaNF);
+
+                                    itemBancoEstoque.Local = "PRODUÇÃO";
+
+                                    DadosGuardados.PassarTela = true;
+
+                                    if (cont == 1)
+                                    {
+                                        MessageBox.Show("NF Removida com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        cont++;
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    DadosGuardados.cont1 = 1;
+                    DadosGuardados.NotaFiscalSaida++;
+                }
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    DadosGuardados.cont1 = 1;
+                    DadosGuardados.NotaFiscalSaida++;
+                    DadosGuardados.PassarTela = true;
+                    MessageBox.Show("NF Confirmada com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
+
+
+        #endregion
+
+
 
 
 
@@ -118,7 +173,7 @@ namespace Controle_de_Estoque
 
                     DadosGuardados.listaBancoEstoque.Add(new BancoEstoque(x.NotaFiscalEntrada, x.Descricao, x.Fornecedor, x.UnidadeDeMedia,
                         x.Quantidade, x.Observavao, x.Valor, x.Emissao, DateTime.Today, x.CodDoProduto, "RECEBIMENTO", DadosGuardados.CodigoDeBarra++,
-                        Lote,x.TesteParaEntrada1=false,x.TesteParaEntrada2=false));
+                        Lote, x.TesteParaEntrada1 = false, x.TesteParaEntrada2 = false));
 
                     x.TesteParaEntrada1 = true;
 

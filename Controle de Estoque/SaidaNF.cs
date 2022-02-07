@@ -16,6 +16,7 @@ namespace Controle_de_Estoque
         {
             InitializeComponent();
             DadosGuardados.PreencherBanco();
+            DadosGuardados.PreencherBanco1();
         }
 
         private void SaidaNF_Load(object sender, EventArgs e)
@@ -83,7 +84,7 @@ namespace Controle_de_Estoque
                         if (DadosGuardados.cont1 == 1)
                         {
                             txtBuscarCodItem_NF.Text = Convert.ToString(DadosGuardados.NotaFiscalSaida);
-                            DadosGuardados.NotaFiscalSaida++;
+                           //DadosGuardados.NotaFiscalSaida++;
                             DadosGuardados.cont1++;
                         }
 
@@ -124,13 +125,13 @@ namespace Controle_de_Estoque
                                     txtSaidaNF_Valor.Text = "";
                                     txtSaidaNF_Obs.Text = "";
                                 }
-
+                                DadosGuardados.PassarTela = false;
                             }
                             break;
                         }
                     }
                     //&& x.Quantidade != 0
-                    else if (x.Local != "PRODUÇÃO" && x.Quantidade > 0)
+                    else if (x.Local != "PRODUÇÃO" && x.Quantidade > 0 && x.CodDoProduto.ToString() == txtSaida_CodItem.Text)
                     {
                         if (cont2 == 1)
                         {
@@ -141,10 +142,10 @@ namespace Controle_de_Estoque
                     else if (x.Local == "PRODUÇÃO" && x.Quantidade == 0)
                     {
                         //if (cont3 == 1)
-                       // {
-                            x.Local = "FATURADO";
-                         //   cont3++;
-                       // }
+                        // {
+                        x.Local = "FATURADO";
+                        //   cont3++;
+                        // }
                     }
 
 
@@ -159,7 +160,9 @@ namespace Controle_de_Estoque
             dgvSaidaNF.Rows.Clear();
             DadosGuardados.cont1 = 1;
             txtBuscarCodItem_NF.Text = "";
+            DadosGuardados.NotaFiscalSaida++;
 
+            DadosGuardados.PassarTela = true;
 
             //foreach (var item in DadosGuardados.listaBancoEstoque)
             //{
@@ -170,22 +173,22 @@ namespace Controle_de_Estoque
         {
             int cont = 1;
 
-            foreach (var item1 in DadosGuardados.listaBancoEstoque)
+            foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
             {
-                if (item1.TesteParaEntrada3 == true && item1.TesteParaEntrada4 == false)
+                if (itemBancoEstoque.TesteParaEntrada3 == true && itemBancoEstoque.TesteParaEntrada4 == false)
                 {
-                    foreach (var item2 in DadosGuardados.listaBancoSaidaNF)
+                    foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                     {
-                        if (item2.NotaFiscalSaida.ToString() == txtBuscarCodItem_NF.Text && item2.TesteParaEntrada5 == false)
+                        if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == txtBuscarCodItem_NF.Text && itemBancoSaidaNF.TesteParaEntrada5 == false)
                         {
-                            item2.TesteParaEntrada5 = true;
+                            itemBancoSaidaNF.TesteParaEntrada5 = true;
 
-                            item1.Quantidade = item1.Quantidade + item2.Quantidade;
+                            itemBancoEstoque.Quantidade = itemBancoEstoque.Quantidade + itemBancoSaidaNF.Quantidade;
 
-                            DadosGuardados.listaBancoSaidaNF.Remove(item2);
+                            DadosGuardados.listaBancoSaidaNF.Remove(itemBancoSaidaNF);
 
                             cont++;
-                            item1.Local = "PRODUÇÃO";
+                            itemBancoEstoque.Local = "PRODUÇÃO";
                             if (cont == 2)
                             {
                                 txtSaida_CodItem.Text = "";
@@ -194,6 +197,10 @@ namespace Controle_de_Estoque
                                 txtSaidaNF_Valor.Text = "";
                                 txtSaidaNF_Obs.Text = "";
 
+                                DadosGuardados.cont1 = 1;
+                                DadosGuardados.NotaFiscalSaida++;
+                                DadosGuardados.PassarTela = true;
+
                                 dgvSaidaNF.Rows.Clear();
                                 MessageBox.Show("NF Removida Com Sucesso!");
                             }
@@ -201,9 +208,7 @@ namespace Controle_de_Estoque
                         break;
                     }
                 }
-                // item1.TesteParaEntrada3 = false;
             }
-
         }
 
         private void txtSaidaNF_Quantidade1_KeyPress(object sender, KeyPressEventArgs e)

@@ -38,7 +38,6 @@
             this.txtBuscarCodItem_NF = new Guna.UI.WinForms.GunaTextBox();
             this.btnBuscarCodItem_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
             this.dgvBuscar = new Guna.UI.WinForms.GunaDataGridView();
-            this.lblErroBuscar = new Guna.UI.WinForms.GunaLabel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,7 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblErroBuscar = new Guna.UI.WinForms.GunaLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -213,17 +213,6 @@
             this.dgvBuscar.ThemeStyle.RowsStyle.Height = 22;
             this.dgvBuscar.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvBuscar.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvBuscar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEstoque_CellContentClick);
-            // 
-            // lblErroBuscar
-            // 
-            this.lblErroBuscar.AutoSize = true;
-            this.lblErroBuscar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErroBuscar.ForeColor = System.Drawing.Color.Red;
-            this.lblErroBuscar.Location = new System.Drawing.Point(348, 34);
-            this.lblErroBuscar.Name = "lblErroBuscar";
-            this.lblErroBuscar.Size = new System.Drawing.Size(0, 32);
-            this.lblErroBuscar.TabIndex = 110;
             // 
             // Column1
             // 
@@ -264,6 +253,16 @@
             // 
             this.Column7.HeaderText = "Código de Barra";
             this.Column7.Name = "Column7";
+            // 
+            // lblErroBuscar
+            // 
+            this.lblErroBuscar.AutoSize = true;
+            this.lblErroBuscar.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErroBuscar.ForeColor = System.Drawing.Color.Red;
+            this.lblErroBuscar.Location = new System.Drawing.Point(348, 34);
+            this.lblErroBuscar.Name = "lblErroBuscar";
+            this.lblErroBuscar.Size = new System.Drawing.Size(0, 32);
+            this.lblErroBuscar.TabIndex = 110;
             // 
             // Buscar
             // 

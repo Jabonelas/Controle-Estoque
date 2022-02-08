@@ -26,13 +26,13 @@ namespace Controle_de_Estoque
 
         private void Estoque_Load(object sender, EventArgs e)
         {
-            if (DadosGuardados.PassarTela == false)
+            if (DadosGuardados.PassouTela == true)
             {
                 DialogResult OpcaoDoUsuario = new DialogResult();
                 OpcaoDoUsuario = MessageBox.Show("A NF Não Foi Confimanda, Deseja Salva-la!", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (OpcaoDoUsuario == DialogResult.No)
                 {
-                    int cont = 1;
+                    int contmbox_NFRemovidaComSucesso = 1;
 
                     foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
@@ -50,17 +50,18 @@ namespace Controle_de_Estoque
 
                                     itemBancoEstoque.Local = "PRODUÇÃO";
 
-                                    DadosGuardados.PassarTela = true;
+                                    DadosGuardados.PassouTela = false;
 
-                                    if (cont == 1)
+                                    if (contmbox_NFRemovidaComSucesso == 1)
                                     {
                                         MessageBox.Show("NF Removida com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        cont++;
+                                        contmbox_NFRemovidaComSucesso++;
                                     }
                                 }
                                 break;
                             }
                         }
+                        
                     }
                     DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                     DadosGuardados.NotaFiscalSaida++;
@@ -69,7 +70,7 @@ namespace Controle_de_Estoque
                 {
                     DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                     DadosGuardados.NotaFiscalSaida++;
-                    DadosGuardados.PassarTela = true;
+                    DadosGuardados.PassouTela = false;
                     MessageBox.Show("NF Confirmada com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -79,43 +80,33 @@ namespace Controle_de_Estoque
         #endregion
 
 
+
+        #region Botão Buscar
+
+
         private void btnBuscarCodItem_Buscar_Click(object sender, EventArgs e)
         {
             dgvBuscar.Rows.Clear();
             if (txtBuscarCodItem_NF.Text == "")
             {
                 lblErroBuscar.Text = "*";
-                MessageBox.Show("Os Campos Com * São Obrigatorios!");
+                MessageBox.Show("Os Campos Com * São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                DadosGuardados.listaBancoEstoque.ForEach(x =>
+                DadosGuardados.listaBancoEstoque.ForEach(itemBancoEstoque =>
                 {
-                    if (x.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
+                    if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
                     {
 
-                        if (x.CodDoProduto.ToString() == txtBuscarCodItem_NF.Text)
+                        if (itemBancoEstoque.CodDoProduto.ToString() == txtBuscarCodItem_NF.Text)
                         {
 
                             dgvBuscar.ColumnCount = 8;
-                            //dgvEstoque.Columns[0].Name = "Nota Fiscal";
-                            //dgvEstoque.Columns[0].Width = 120;
-                            //dgvEstoque.Columns[1].Name = "Codigo do item";
-                            //dgvEstoque.Columns[1].Width = 180;
-                            //dgvEstoque.Columns[2].Name = "Descricção do item";
-                            //dgvEstoque.Columns[2].Width = 380;
-                            //dgvEstoque.Columns[3].Name = "Quantidade";
-                            //dgvEstoque.Columns[3].Width = 110;
-                            //dgvEstoque.Columns[4].Name = "Unidade";
-                            //dgvEstoque.Columns[4].Width = 80;
-                            //dgvEstoque.Columns[4].Name = "Local";
-                            //dgvEstoque.Columns[5].Width = 80;
-                            //dgvEstoque.Columns[5].Name = "Codigo de Barras";
-                            //dgvEstoque.Columns[6].Width = 180;
 
                             var rows = new List<string[]>();
-                            string[] row1 = new string[] { x.NotaFiscal.ToString("D6"), x.CodDoProduto.ToString(),
-                        x.Descricao, x.Quantidade.ToString (),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
+                            string[] row1 = new string[] { itemBancoEstoque.NotaFiscal.ToString("D6"), itemBancoEstoque.CodDoProduto.ToString(),
+                            itemBancoEstoque.Descricao, itemBancoEstoque.Quantidade.ToString (),itemBancoEstoque.UnidadeDeMedia,itemBancoEstoque.Local,itemBancoEstoque.Lote.ToShortDateString().Replace("/",""),itemBancoEstoque.CodDeBarra.ToString("D10") };
                             rows.Add(row1);
 
                             foreach (string[] item in rows)
@@ -129,10 +120,13 @@ namespace Controle_de_Estoque
             }
         }
 
-        private void dgvEstoque_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+        #endregion
+
+
+
+        #region TextBox
+
 
         private void txtBuscarCodItem_NF_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -141,6 +135,10 @@ namespace Controle_de_Estoque
                 e.Handled = true;
             }
         }
+
+
+        #endregion
+
     }
 }
 

@@ -112,7 +112,6 @@
             this.txtEstoqueCodBarra.SelectedText = "";
             this.txtEstoqueCodBarra.Size = new System.Drawing.Size(234, 32);
             this.txtEstoqueCodBarra.TabIndex = 3;
-            this.txtEstoqueCodBarra.TextChanged += new System.EventHandler(this.txtEstoqueCodBarra_TextChanged);
             this.txtEstoqueCodBarra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueCodBarra_KeyPress);
             // 
             // gunaLabel2

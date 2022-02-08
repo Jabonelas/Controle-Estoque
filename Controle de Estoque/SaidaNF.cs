@@ -22,6 +22,9 @@ namespace Controle_de_Estoque
         {
 
         }
+
+
+        #region Botão Buscar Por Codigo De Barra
         private void btnSaidaNF_BuscarCodItem_Click(object sender, EventArgs e)
         {
 
@@ -29,56 +32,61 @@ namespace Controle_de_Estoque
             {
                 lblSaidaNF_CodItem.Text = "*";
                 lblSaidaNF_Quantidade.Text = "*";
-                MessageBox.Show("Os Campos Com * São Obrigatorios!");
+                MessageBox.Show("Os Campos Com * São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                foreach (var x in DadosGuardados.listaBancoEstoque)
+                foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                 {
                     //DadosGuardados.listaBancoEstoque.ForEach(x =>
                     //{
-                    if (x.CodDoProduto.ToString() == txtSaidaNF_CodItem.Text && Convert.ToDouble(txtSaidaNF_Quantidade.Text) <= x.Quantidade)
+                    if (itemBancoEstoque.CodDoProduto.ToString() == txtSaidaNF_CodItem.Text && Convert.ToDouble(txtSaidaNF_Quantidade.Text) <= itemBancoEstoque.Quantidade)
                     {
-                        txtSaidaNF_Descricao.Text = x.Descricao;
-                        txtSaidaNF_Valor.Text = ("R$ " + Convert.ToString((x.Valor * Convert.ToDouble(txtSaidaNF_Quantidade.Text) / x.Quantidade).ToString("N2")));
-                        txtSaidaNF_Obs.Text = x.Observacao;
+                        txtSaidaNF_Descricao.Text = itemBancoEstoque.Descricao;
+                        txtSaidaNF_Valor.Text = ("R$ " + Convert.ToString((itemBancoEstoque.Valor * Convert.ToDouble(txtSaidaNF_Quantidade.Text) / itemBancoEstoque.Quantidade).ToString("N2")));
+                        txtSaidaNF_Obs.Text = itemBancoEstoque.Observacao;
 
                         lblSaidaNF_NFSaida.Text = "";
                         lblSaidaNF_CodItem.Text = "";
                         lblSaidaNF_Quantidade.Text = "";
                     }
-                    else if (Convert.ToDouble(txtSaidaNF_Quantidade.Text) > x.Quantidade && x.Quantidade != 0)
+                    else if (Convert.ToDouble(txtSaidaNF_Quantidade.Text) > itemBancoEstoque.Quantidade && itemBancoEstoque.Quantidade != 0)
                     {
-                        MessageBox.Show($"Saldo Insuficiente!\nSaldo Restante {x.Quantidade} {x.UnidadeDeMedia}.");
+                        MessageBox.Show($"Saldo Insuficiente!\nSaldo Restante {itemBancoEstoque.Quantidade} {itemBancoEstoque.UnidadeDeMedia}.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
                     }
                 }
                 // });
             }
         }
+        #endregion
+
+
+
+        #region Botão Adicionar
+
+
         private void btnSaidaNF_Adicionar_Click(object sender, EventArgs e)
         {
-            int cont2 = 1;
-            //int cont3 = 1;
-
+            int contmbox_ItemNaoestaDisponivel = 1;
 
             if (txtSaidaNF_CodItem.Text == "" || txtSaidaNF_Quantidade.Text == "")
             {
                 lblSaidaNF_CodItem.Text = "*";
                 lblSaidaNF_Quantidade.Text = "*";
-                MessageBox.Show("Os Campos Com * São Obrigatorios!");
+                MessageBox.Show("Os Campos Com * São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 DadosGuardados.listaBancoEstoque.OrderBy(d => d.Lote);
 
-                foreach (var x in DadosGuardados.listaBancoEstoque)
+                foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                 {
 
                     //DadosGuardados.listaBancoEstoque.ForEach(x =>
                     //{
 
-                    if (x.CodDoProduto.ToString() == txtSaidaNF_CodItem.Text && txtSaidaNF_Descricao.Text != "" && x.Local == "PRODUÇÃO" && x.Quantidade != 0)
+                    if (itemBancoEstoque.CodDoProduto.ToString() == txtSaidaNF_CodItem.Text && txtSaidaNF_Descricao.Text != "" && itemBancoEstoque.Local == "PRODUÇÃO" && itemBancoEstoque.Quantidade != 0)
                     {
                         if (DadosGuardados.contParaGerarNotaFiscalDeSaida == 1)
                         {
@@ -86,25 +94,23 @@ namespace Controle_de_Estoque
 
                             DadosGuardados.contParaGerarNotaFiscalDeSaida++;
                         }
-
                         if (txtSaidaNF_SaidaNF.Text != "")
                         {
-                            x.Quantidade = x.Quantidade - Convert.ToDouble(txtSaidaNF_Quantidade.Text);
+                            itemBancoEstoque.Quantidade = itemBancoEstoque.Quantidade - Convert.ToDouble(txtSaidaNF_Quantidade.Text);
 
-                            DadosGuardados.listaBancoSaidaNF.Add(new BancoSaidaNF(Convert.ToInt32(txtSaidaNF_SaidaNF.Text), x.CodDoProduto, x.Descricao, Convert.ToDouble(txtSaidaNF_Quantidade.Text),
-                           x.UnidadeDeMedia, txtSaidaNF_Obs.Text, x.Valor, DateTime.Today, "FATURADO", x.CodDeBarra, x.Lote, false));
+                            DadosGuardados.listaBancoSaidaNF.Add(new BancoSaidaNF(Convert.ToInt32(txtSaidaNF_SaidaNF.Text), itemBancoEstoque.CodDoProduto, itemBancoEstoque.Descricao, Convert.ToDouble(txtSaidaNF_Quantidade.Text),
+                           itemBancoEstoque.UnidadeDeMedia, txtSaidaNF_Obs.Text, itemBancoEstoque.Valor, DateTime.Today, "FATURADO", itemBancoEstoque.CodDeBarra, itemBancoEstoque.Lote, false));
 
                             dgvSaidaNF.Rows.Clear();
-                            foreach (var c in DadosGuardados.listaBancoSaidaNF)
+                            foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
-                                if (txtSaidaNF_SaidaNF.Text == c.NotaFiscalSaida.ToString())
+                                if (txtSaidaNF_SaidaNF.Text == itemBancoSaidaNF.NotaFiscalSaida.ToString())
                                 {
-
                                     dgvSaidaNF.ColumnCount = 8;
 
                                     var rows = new List<string[]>();
-                                    string[] row1 = new string[] { c.NotaFiscalSaida.ToString("D6"), c.CodDoProduto.ToString(),
-                                    c.Descricao, c.Quantidade.ToString (),c.UnidadeDeMedia,c.Observacao,("R$ "+c.Valor.ToString("N2")),c.Emissao.ToShortDateString() };
+                                    string[] row1 = new string[] { itemBancoSaidaNF.NotaFiscalSaida.ToString("D6"), itemBancoSaidaNF.CodDoProduto.ToString(),
+                                    itemBancoSaidaNF.Descricao, itemBancoSaidaNF.Quantidade.ToString (),itemBancoSaidaNF.UnidadeDeMedia,itemBancoSaidaNF.Observacao,("R$ "+itemBancoSaidaNF.Valor.ToString("N2")),itemBancoSaidaNF.Emissao.ToShortDateString() };
                                     rows.Add(row1);
 
                                     foreach (string[] item in rows)
@@ -115,8 +121,7 @@ namespace Controle_de_Estoque
                                     lblSaidaNF_CodItem.Text = "";
                                     lblSaidaNF_Quantidade.Text = "";
 
-                                    x.TesteParaSeFoiFeitaMovimentaçãoNaQuant = true;
-
+                                    itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant = true;
 
                                     txtSaidaNF_CodItem.Text = "";
                                     txtSaidaNF_Descricao.Text = "";
@@ -124,65 +129,71 @@ namespace Controle_de_Estoque
                                     txtSaidaNF_Valor.Text = "";
                                     txtSaidaNF_Obs.Text = "";
 
-                                    if (x.Local == "PRODUÇÃO" && x.Quantidade == 0)
+                                    if (itemBancoEstoque.Local == "PRODUÇÃO" && itemBancoEstoque.Quantidade == 0)
                                     {
-                                        //if (cont3 == 1)
-                                        // {
-                                        x.TesteParaSaberSeFoiFaturadoZerandoAQuant = true;
-                                        x.Local = "FATURADO";
-                                        //   cont3++;
-                                        // }
+                                        itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant = true;
+                                        itemBancoEstoque.Local = "FATURADO";
                                     }
                                 }
-                                DadosGuardados.PassarTela = false;
+                                DadosGuardados.PassouTela = true;
                             }
                             break;
                         }
                     }
-                    //&& x.Quantidade != 0
-                    else if (x.Local != "PRODUÇÃO" && x.Quantidade > 0 && x.CodDoProduto.ToString() == txtSaidaNF_CodItem.Text)
+                    else if (itemBancoEstoque.Local != "PRODUÇÃO" && itemBancoEstoque.Quantidade > 0 && itemBancoEstoque.CodDoProduto.ToString() == txtSaidaNF_CodItem.Text)
                     {
-                        if (cont2 == 1)
+                        if (contmbox_ItemNaoestaDisponivel == 1)
                         {
-                            MessageBox.Show("Item Não esta Disponivel Em Produção!");
-                            cont2++;
+                            MessageBox.Show("Item Não esta Disponivel Em Produção!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            contmbox_ItemNaoestaDisponivel++;
                         }
                     }
-                    else if (x.Local == "PRODUÇÃO" && x.Quantidade == 0)
+                    else if (itemBancoEstoque.Local == "PRODUÇÃO" && itemBancoEstoque.Quantidade == 0)
                     {
-                        //if (cont3 == 1)
-                        // {
-                        x.TesteParaSaberSeFoiFaturadoZerandoAQuant = true;
-                        x.Local = "FATURADO";
-                        //   cont3++;
-                        // }
+                        itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant = true;
+                        itemBancoEstoque.Local = "FATURADO";
                     }
-
-
-
                     //});
                 }
             }
         }
 
+
+        #endregion
+
+
+
+        #region Botão Confirmar
+
+
         private void btnSaidaNF_Confirmar_Click(object sender, EventArgs e)
         {
+            if (txtSaidaNF_SaidaNF.Text != "")
+            {
+                MessageBox.Show("NF Confirmada com Sucesso!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             dgvSaidaNF.Rows.Clear();
             DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
             txtSaidaNF_SaidaNF.Text = "";
             DadosGuardados.NotaFiscalSaida++;
-
-            DadosGuardados.PassarTela = true;
-
-         
+            DadosGuardados.PassouTela = false;
         }
+
+
+        #endregion
+
+
+
+        #region Botão Cancelar
+
+
         private void btnSaidaNF_Cancelar_Click(object sender, EventArgs e)
         {
-            int contMessageBox_NFRemovidaComSucesso = 1;
+            int contmbox_NFRemovidaComSucesso = 1;
 
             foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
             {
-                if (itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant == true )
+                if (itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant == true)
                 {
                     foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                     {
@@ -196,9 +207,9 @@ namespace Controle_de_Estoque
 
                             itemBancoEstoque.Local = "PRODUÇÃO";
                             itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant = false;
-                            contMessageBox_NFRemovidaComSucesso++;
+                            contmbox_NFRemovidaComSucesso++;
 
-                            if (contMessageBox_NFRemovidaComSucesso == 2)
+                            if (contmbox_NFRemovidaComSucesso == 2)
                             {
                                 txtSaidaNF_CodItem.Text = "";
                                 txtSaidaNF_Descricao.Text = "";
@@ -206,12 +217,12 @@ namespace Controle_de_Estoque
                                 txtSaidaNF_Valor.Text = "";
                                 txtSaidaNF_Obs.Text = "";
 
-                               // DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
+                                DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                                 DadosGuardados.NotaFiscalSaida++;
-                                DadosGuardados.PassarTela = true;
+                                DadosGuardados.PassouTela = false;
 
                                 dgvSaidaNF.Rows.Clear();
-                                MessageBox.Show("NF Removida Com Sucesso!");
+                                MessageBox.Show("NF Removida Com Sucesso!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                         break;
@@ -220,21 +231,13 @@ namespace Controle_de_Estoque
             }
         }
 
-        private void txtSaidaNF_Quantidade1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
 
-        private void txtSaida_CodItem_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
+        #endregion
+
+
+
+        #region Botão Buscar Por NF
+
 
         private void btnSaidaNF_BuscarNFSaida_Click(object sender, EventArgs e)
         {
@@ -242,7 +245,7 @@ namespace Controle_de_Estoque
             if (txtSaidaNF_SaidaNF.Text == "")
             {
                 lblSaidaNF_NFSaida.Text = "*";
-                MessageBox.Show("Os Campos Com * São Obrigatorios!");
+                MessageBox.Show("Os Campos Com * São Obrigatorios!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -277,6 +280,30 @@ namespace Controle_de_Estoque
             }
         }
 
+
+        #endregion
+
+
+
+        #region TextBox
+
+
+        private void txtSaidaNF_Quantidade1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSaida_CodItem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void txtBuscarCodItem_NF_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
@@ -284,5 +311,9 @@ namespace Controle_de_Estoque
                 e.Handled = true;
             }
         }
+
+        #endregion
+
+
     }
 }

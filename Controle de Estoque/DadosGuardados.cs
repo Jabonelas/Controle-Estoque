@@ -12,17 +12,18 @@ namespace Controle_de_Estoque
 
         public static int NotaFiscalSaida = 0000000001;
 
+        //Contador para dar entrada apenas uma vez a cada NF gerada, garantindo que seja adicionado mais de um item na mesma NF de Saida
         public static int contParaGerarNotaFiscalDeSaida = 1;
 
         public static List<BancoEntradaNF> listaNF = new List<BancoEntradaNF>();
 
+        //Teste para preencher a listaNF do BancoEntradaNF apenas uma vez
         public static bool FoiInicializada = false;
-
 
         public static List<BancoSaidaNF> listaBancoSaidaNF = new List<BancoSaidaNF>();
 
-
-        public static bool PassarTela = true;
+        //Teste para Saber se o Usuario mudou de tela sem confirmar a NF de Saida
+        public static bool PassouTela = false;
 
 
         #region Banco Entrada NF

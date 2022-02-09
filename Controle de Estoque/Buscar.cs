@@ -36,7 +36,7 @@ namespace Controle_de_Estoque
 
                     foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
-                        if (itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
+                        if (itemBancoEstoque.TesteParaVerificarSeFoiSalvaNotaFiscalSaida == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == false)
                         {
                             foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
@@ -96,7 +96,7 @@ namespace Controle_de_Estoque
             {
                 DadosGuardados.listaBancoEstoque.ForEach(itemBancoEstoque =>
                 {
-                    if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
+                    if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == false)
                     {
 
                         if (itemBancoEstoque.CodDoProduto.ToString() == txtBuscarCodItem_NF.Text)

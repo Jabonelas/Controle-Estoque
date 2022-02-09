@@ -121,7 +121,7 @@ namespace Controle_de_Estoque
                                     lblSaidaNF_CodItem.Text = "";
                                     lblSaidaNF_Quantidade.Text = "";
 
-                                    itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant = true;
+                                    itemBancoEstoque.TesteParaVerificarSeFoiSalvaNotaFiscalSaida = true;
 
                                     txtSaidaNF_CodItem.Text = "";
                                     txtSaidaNF_Descricao.Text = "";
@@ -129,9 +129,11 @@ namespace Controle_de_Estoque
                                     txtSaidaNF_Valor.Text = "";
                                     txtSaidaNF_Obs.Text = "";
 
+                                    itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo = true;
+
                                     if (itemBancoEstoque.Local == "PRODUÇÃO" && itemBancoEstoque.Quantidade == 0)
                                     {
-                                        itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant = true;
+                                        itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo = true;
                                         itemBancoEstoque.Local = "FATURADO";
                                     }
                                 }
@@ -150,7 +152,7 @@ namespace Controle_de_Estoque
                     }
                     else if (itemBancoEstoque.Local == "PRODUÇÃO" && itemBancoEstoque.Quantidade == 0)
                     {
-                        itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant = true;
+                        itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo = true;
                         itemBancoEstoque.Local = "FATURADO";
                     }
                     //});
@@ -193,7 +195,7 @@ namespace Controle_de_Estoque
 
             foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
             {
-                if (itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant == true)
+                if (itemBancoEstoque.TesteParaVerificarSeFoiSalvaNotaFiscalSaida == true)
                 {
                     foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                     {
@@ -206,7 +208,7 @@ namespace Controle_de_Estoque
                             DadosGuardados.listaBancoSaidaNF.Remove(itemBancoSaidaNF);
 
                             itemBancoEstoque.Local = "PRODUÇÃO";
-                            itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant = false;
+                            itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo = false;
                             contmbox_NFRemovidaComSucesso++;
 
                             if (contmbox_NFRemovidaComSucesso == 2)

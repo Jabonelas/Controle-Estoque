@@ -36,7 +36,7 @@ namespace Controle_de_Estoque
 
                     foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
-                        if (itemBancoEstoque.TesteParaSeFoiFeitaMovimentaçãoNaQuant == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
+                        if (itemBancoEstoque.TesteParaVerificarSeFoiSalvaNotaFiscalSaida == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == false)
                         {
                             foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
@@ -93,17 +93,21 @@ namespace Controle_de_Estoque
             }
             else
             {
-                foreach (var itemBancoSaidaNF in DadosGuardados.listaNF)
-                //DadosGuardados.listaNF.ForEach(x =>
+                foreach (var itemBancoEntradaNF in DadosGuardados.listaEntradaNF)
+                //DadosGuardados.listaEntradaNF.ForEach(x =>
                 {
-                    if (itemBancoSaidaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == false && itemBancoSaidaNF.TesteParaDiferenciarItensDaMesmaNF == false)
+                    //foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                    //{
+
+                    ///Preenche quando não foi dado entrada
+                    if (itemBancoEntradaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == false && itemBancoEntradaNF.TesteParaDiferenciarItensDaMesmaNF == false)
                     {
-                        dgvEntradaNF.ColumnCount = 11;
+                        dgvEntradaNF.ColumnCount = 12;
 
                         var rows = new List<string[]>();
-                        string[] row1 = new string[] { itemBancoSaidaNF.NotaFiscalEntrada.ToString("D6"),itemBancoSaidaNF.CodDoProduto.ToString(),
-                        itemBancoSaidaNF.Descricao,itemBancoSaidaNF.Fornecedor, itemBancoSaidaNF.Quantidade.ToString(),itemBancoSaidaNF.UnidadeDeMedia,itemBancoSaidaNF.Observavao,("R$ "+itemBancoSaidaNF.Valor.ToString("N2")),
-                        itemBancoSaidaNF.Local,itemBancoSaidaNF.Emissao.ToShortDateString()};
+                        string[] row1 = new string[] {itemBancoEntradaNF.NotaFiscalEntrada.ToString("D6"),itemBancoEntradaNF.CodDoProduto.ToString(),
+                            itemBancoEntradaNF.Descricao,itemBancoEntradaNF.Fornecedor, itemBancoEntradaNF.Quantidade.ToString(),itemBancoEntradaNF.UnidadeDeMedia,itemBancoEntradaNF.Observavao,("R$ "+itemBancoEntradaNF.Valor.ToString("N2")),
+                            itemBancoEntradaNF.Local,itemBancoEntradaNF.Emissao.ToShortDateString(),"------","------"};
                         rows.Add(row1);
 
                         foreach (string[] item in rows)
@@ -114,9 +118,10 @@ namespace Controle_de_Estoque
                         lblNotaFiscal.Text = "";
 
                     }
-                    else if (itemBancoSaidaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == true && itemBancoSaidaNF.TesteParaDiferenciarItensDaMesmaNF == false)
+                    ///Preenche quando deu entrada
+                    else if (itemBancoEntradaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == true && itemBancoEntradaNF.TesteParaDiferenciarItensDaMesmaNF == false)
                     {
-                        dgvEntradaNF.ColumnCount = 11;
+                        dgvEntradaNF.ColumnCount = 12;
                         DateTime Lancamento = DateTime.Now;
 
                         foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
@@ -126,8 +131,8 @@ namespace Controle_de_Estoque
 
                                 var rows = new List<string[]>();
                                 string[] row1 = new string[] { itemBancoEstoque.NotaFiscal.ToString("D6"),itemBancoEstoque.CodDoProduto.ToString(),
-                                itemBancoEstoque.Descricao,itemBancoEstoque.Fornecedor, itemBancoEstoque.Quantidade.ToString(),itemBancoEstoque.UnidadeDeMedia,itemBancoSaidaNF.Observavao,("R$ "+itemBancoEstoque.Valor.ToString("N2")),
-                                itemBancoEstoque.Local,itemBancoEstoque.Emissao.ToShortDateString(),itemBancoEstoque.Lancamento.ToShortDateString()};
+                                itemBancoEstoque.Descricao,itemBancoEstoque.Fornecedor, itemBancoEstoque.Quantidade.ToString(),itemBancoEstoque.UnidadeDeMedia,itemBancoEntradaNF.Observavao,("R$ "+itemBancoEstoque.Valor.ToString("N2")),
+                                itemBancoEstoque.Local,itemBancoEstoque.Emissao.ToShortDateString(),itemBancoEstoque.Lancamento.ToShortDateString(),itemBancoEstoque.CodDeBarra.ToString("D10")};
                                 rows.Add(row1);
                                 foreach (string[] item in rows)
                                 {
@@ -139,6 +144,7 @@ namespace Controle_de_Estoque
                         }
                         break;
                     }
+                    //}
                 }
 
                 FeitaABuscaEntradaNF = true;
@@ -160,11 +166,11 @@ namespace Controle_de_Estoque
             int contmbox_NFJaInformada = 1;
             int contmbox_EntradaComSucesso = 1;
 
-            foreach (var itemBancoSaidaNF in DadosGuardados.listaNF)
+            foreach (var itemBancoEntradaNF in DadosGuardados.listaEntradaNF)
             {
-                //DadosGuardados.listaNF.ForEach(x =>
+                //DadosGuardados.listaEntradaNF.ForEach(x =>
                 // {
-                if (itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == true && itemBancoSaidaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && FeitaABuscaEntradaNF == true)
+                if (itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == true && itemBancoEntradaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && FeitaABuscaEntradaNF == true)
                 {
                     contmbox_NFJaInformada++;
                     if (contmbox_NFJaInformada == 2)
@@ -172,17 +178,17 @@ namespace Controle_de_Estoque
                         MessageBox.Show("NF Já Informada!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else if (itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == false && itemBancoSaidaNF.TesteParaDiferenciarItensDaMesmaNF == false && itemBancoSaidaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && FeitaABuscaEntradaNF == true)
+                else if (itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == false && itemBancoEntradaNF.TesteParaDiferenciarItensDaMesmaNF == false && itemBancoEntradaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && FeitaABuscaEntradaNF == true)
                 {
                     DateTime Lote = DateTime.Today;
 
                     Lote.ToString().Replace("/", "");
 
-                    DadosGuardados.listaBancoEstoque.Add(new BancoEstoque(itemBancoSaidaNF.NotaFiscalEntrada, itemBancoSaidaNF.Descricao, itemBancoSaidaNF.Fornecedor, itemBancoSaidaNF.UnidadeDeMedia,
-                        itemBancoSaidaNF.Quantidade, itemBancoSaidaNF.Observavao, itemBancoSaidaNF.Valor, itemBancoSaidaNF.Emissao, DateTime.Today, itemBancoSaidaNF.CodDoProduto, "RECEBIMENTO", DadosGuardados.CodigoDeBarra++,
-                        Lote, itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque = false, itemBancoSaidaNF.TesteParaDiferenciarItensDaMesmaNF = false));
+                    DadosGuardados.listaBancoEstoque.Add(new BancoEstoque(itemBancoEntradaNF.NotaFiscalEntrada, itemBancoEntradaNF.Descricao, itemBancoEntradaNF.Fornecedor, itemBancoEntradaNF.UnidadeDeMedia,
+                        itemBancoEntradaNF.Quantidade, itemBancoEntradaNF.Observavao, itemBancoEntradaNF.Valor, itemBancoEntradaNF.Emissao, DateTime.Today, itemBancoEntradaNF.CodDoProduto, "RECEBIMENTO", DadosGuardados.CodigoDeBarra++,
+                        Lote, itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque = false, itemBancoEntradaNF.TesteParaDiferenciarItensDaMesmaNF = false, false));
 
-                    itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque = true;
+                    itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque = true;
 
                     contmbox_EntradaComSucesso++;
                     if (contmbox_EntradaComSucesso == 2)
@@ -195,7 +201,7 @@ namespace Controle_de_Estoque
 
                 // });
             }
-             FeitaABuscaEntradaNF = false;
+            FeitaABuscaEntradaNF = false;
             DadosGuardados.setListaBancoEstoque(DadosGuardados.listaBancoEstoque);
         }
         #endregion
@@ -208,41 +214,55 @@ namespace Controle_de_Estoque
         {
             int contmbox_NFRemovidaComSucesso = 1;
 
-            foreach (var itemBancoSaidaNF in DadosGuardados.listaNF)
+            bool ChaveForeach = false; /// Teste para parar caso entre em Quantidade e Local Precisão Esta Igual a Origem.
+
+            foreach (var itemBancoEntradaNF in DadosGuardados.listaEntradaNF)
             {
-                if (itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == true && itemBancoSaidaNF.TesteParaDiferenciarItensDaMesmaNF == false && itemBancoSaidaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && FeitaABuscaEntradaNF == true)
+                if (ChaveForeach == true)
+                {
+                    break;
+                }
+
+                else if (itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == true && itemBancoEntradaNF.TesteParaDiferenciarItensDaMesmaNF == false && itemBancoEntradaNF.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && FeitaABuscaEntradaNF == true)
                 {
                     foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
-                        if (itemBancoEstoque.NotaFiscal.ToString() == txtEntrada_NF.Text)
+                        if (ChaveForeach == true)
                         {
-                            FeitaABuscaEntradaNF = false;
-                            // if (item2.Quantidade == item1.Quantidade && item2.Local == item1.Local)
-                            //{
-                            DadosGuardados.listaBancoEstoque.Remove(itemBancoEstoque);
-                            contmbox_NFRemovidaComSucesso++;
-                            if (contmbox_NFRemovidaComSucesso == 2)
-                            {
-                                MessageBox.Show("NF Removida Com Sucesso!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
                             break;
-                            // }
-                            //else
-                            //{
-                            //    contMessageBoxQuant++;
-                            //    if (contMessageBoxQuant == 2)
-                            //    {
-                            //        DialogResult OpcaoDoUsuario = new DialogResult();
-                            //        OpcaoDoUsuario = MessageBox.Show("Quantidade ou Local Diferente da Origem", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            //    }
-                            //       break;
-                            //}
                         }
 
+                        foreach (var item in DadosGuardados.listaBancoEstoque)
+                        {
+                            if (item.NotaFiscal.ToString() == txtEntrada_NF.Text && item.Local != "RECEBIMENTO")// && itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo == true)
+                            {
+                                ChaveForeach = true;
+                                MessageBox.Show("Quantidade e Local Precisão Esta Igual a Origem!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                break;
+                            }
+                        }
+
+                        if (ChaveForeach == false)
+                        {
+
+                            if (itemBancoEstoque.NotaFiscal.ToString() == txtEntrada_NF.Text && itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo == false)
+                            {
+
+                                // FeitaABuscaEntradaNF = false;
+                                DadosGuardados.listaBancoEstoque.Remove(itemBancoEstoque);
+
+                                contmbox_NFRemovidaComSucesso++;
+                                 itemBancoEntradaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque = false;
+                                if (contmbox_NFRemovidaComSucesso == 2)
+                                {
+                                    MessageBox.Show("NF Removida Com Sucesso!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                break;
+
+                            }
+                        }
                     }
                 }
-                itemBancoSaidaNF.TesteParaSaberSeFoiDadoEnatradaBancoEstoque = false;
             }
         }
         #endregion
@@ -277,7 +297,7 @@ namespace Controle_de_Estoque
         //            {
         //                DadosGuardados.listaBancoEstoque.ForEach(itemBancoEstoque =>
         //                {
-        //                    if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoAQuant == false)
+        //                    if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == false)
         //                    {
 
         //                        if (itemBancoEstoque.CodDoProduto.ToString() == txtBuscarCodItem_NF.Text)
@@ -324,7 +344,7 @@ namespace Controle_de_Estoque
         //}
         //else
         //{
-        //    DadosGuardados.listaNF.ForEach(x =>
+        //    DadosGuardados.listaEntradaNF.ForEach(x =>
         //    {
         //        if (x.NotaFiscalEntrada.ToString() == txtEntrada_NF.Text && x.TesteParaSaberSeFoiDadoEnatradaBancoEstoque == false)
         //        {
@@ -354,7 +374,7 @@ namespace Controle_de_Estoque
 
         ///Busca e substituição por Lambda 
 
-        //DadosGuardados.listaNF[DadosGuardados.listaNF.FindIndex(ind => ind.TesteParaSaberSeFoiDadoEnatradaBancoEstoque.Equals(true))].TesteParaSaberSeFoiDadoEnatradaBancoEstoque = false;
+        //DadosGuardados.listaEntradaNF[DadosGuardados.listaEntradaNF.FindIndex(ind => ind.TesteParaSaberSeFoiDadoEnatradaBancoEstoque.Equals(true))].TesteParaSaberSeFoiDadoEnatradaBancoEstoque = false;
         #endregion
     }
 }

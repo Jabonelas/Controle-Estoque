@@ -15,9 +15,9 @@ namespace Controle_de_Estoque
         //Contador para dar entrada apenas uma vez a cada NF gerada, garantindo que seja adicionado mais de um item na mesma NF de Saida
         public static int contParaGerarNotaFiscalDeSaida = 1;
 
-        public static List<BancoEntradaNF> listaNF = new List<BancoEntradaNF>();
+        public static List<BancoEntradaNF> listaEntradaNF = new List<BancoEntradaNF>();
 
-        //Teste para preencher a listaNF do BancoEntradaNF apenas uma vez
+        //Teste para preencher a listaEntradaNF do BancoEntradaNF apenas uma vez
         public static bool FoiInicializada = false;
 
         public static List<BancoSaidaNF> listaBancoSaidaNF = new List<BancoSaidaNF>();
@@ -31,7 +31,7 @@ namespace Controle_de_Estoque
         {
             if (FoiInicializada == false)
             {
-                listaNF = new List<BancoEntradaNF>()
+                listaEntradaNF = new List<BancoEntradaNF>()
               {
                  new BancoEntradaNF(000001,"TELHA ONDULADA FIBROCIMENTO 224 X 110 5MM","IMBRALIT","UN",100,"--",3990.90,new DateTime(2015,01,12),false,10,false,"TRÂNSITO"),
                 new BancoEntradaNF(000001,"CUMEEIRA NORMAL FIBROCIMENTO 15G 110 X 5MM","IMBRALIT","UN",100,"--",2990.90,new DateTime(2015,01,12),false,11,false,"TRÂNSITO"),

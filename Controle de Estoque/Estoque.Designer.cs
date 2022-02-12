@@ -47,14 +47,6 @@
             this.gunaLabel6 = new Guna.UI.WinForms.GunaLabel();
             this.txtEstoqueDescricao = new Guna.UI.WinForms.GunaTextBox();
             this.dgvEstoque = new Guna.UI.WinForms.GunaDataGridView();
-            this.txtEstoqueDestino = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.lblDestino = new Guna.UI.WinForms.GunaLabel();
-            this.lblbarra = new Guna.UI.WinForms.GunaLabel();
-            this.txtEstoqueLote = new Guna.UI.WinForms.GunaTextBox();
-            this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
-            this.btnEstoque_Confirmar = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.btnEstoque_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +56,14 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtEstoqueDestino = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
+            this.lblDestino = new Guna.UI.WinForms.GunaLabel();
+            this.lblbarra = new Guna.UI.WinForms.GunaLabel();
+            this.txtEstoqueLote = new Guna.UI.WinForms.GunaTextBox();
+            this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
+            this.btnEstoque_Confirmar = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btnEstoque_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEstoque)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +112,7 @@
             this.txtEstoqueCodBarra.PasswordChar = '\0';
             this.txtEstoqueCodBarra.SelectedText = "";
             this.txtEstoqueCodBarra.Size = new System.Drawing.Size(234, 32);
-            this.txtEstoqueCodBarra.TabIndex = 3;
+            this.txtEstoqueCodBarra.TabIndex = 50;
             this.txtEstoqueCodBarra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueCodBarra_KeyPress);
             // 
             // gunaLabel2
@@ -314,6 +314,51 @@
             this.dgvEstoque.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvEstoque.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "NF de Entrada:";
+            this.Column1.Name = "Column1";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "NF de Saída:";
+            this.Column9.Name = "Column9";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Código do Item";
+            this.Column2.Name = "Column2";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Descrição do Produto";
+            this.Column4.Name = "Column4";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Quantidade";
+            this.Column3.Name = "Column3";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "UN";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Local";
+            this.Column6.Name = "Column6";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Lote";
+            this.Column8.Name = "Column8";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Código de Barra";
+            this.Column7.Name = "Column7";
+            // 
             // txtEstoqueDestino
             // 
             this.txtEstoqueDestino.BackColor = System.Drawing.Color.Transparent;
@@ -467,51 +512,6 @@
             this.btnEstoque_Buscar.Text = "Buscar";
             this.btnEstoque_Buscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnEstoque_Buscar.Click += new System.EventHandler(this.btnEstoqueCodBarra_Buscar_Click);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "NF de Entrada:";
-            this.Column1.Name = "Column1";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "NF de Saída:";
-            this.Column9.Name = "Column9";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Código do Item";
-            this.Column2.Name = "Column2";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Descrição do Produto";
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Quantidade";
-            this.Column3.Name = "Column3";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "UN";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Local";
-            this.Column6.Name = "Column6";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Lote";
-            this.Column8.Name = "Column8";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Código de Barra";
-            this.Column7.Name = "Column7";
             // 
             // Estoque
             // 

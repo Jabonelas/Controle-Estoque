@@ -40,9 +40,6 @@
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.lblNotaFiscal = new Guna.UI.WinForms.GunaLabel();
             this.dgvEntradaNF = new Guna.UI.WinForms.GunaDataGridView();
-            this.btnEntradaNF_Excluir = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.btnEntradaNF_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
-            this.btnEntradaNF_Confirmar = new Guna.UI.WinForms.GunaAdvenceButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +52,9 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEntradaNF_Excluir = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btnEntradaNF_Buscar = new Guna.UI.WinForms.GunaAdvenceButton();
+            this.btnEntradaNF_Confirmar = new Guna.UI.WinForms.GunaAdvenceButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntradaNF)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +103,7 @@
             this.txtEntrada_NF.PasswordChar = '\0';
             this.txtEntrada_NF.SelectedText = "";
             this.txtEntrada_NF.Size = new System.Drawing.Size(234, 33);
-            this.txtEntrada_NF.TabIndex = 0;
+            this.txtEntrada_NF.TabIndex = 1;
             this.txtEntrada_NF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEntrada_NF_TextChanged);
             // 
             // gunaLabel1
@@ -200,114 +200,6 @@
             this.dgvEntradaNF.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvEntradaNF.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // btnEntradaNF_Excluir
-            // 
-            this.btnEntradaNF_Excluir.Animated = true;
-            this.btnEntradaNF_Excluir.AnimationHoverSpeed = 0.4F;
-            this.btnEntradaNF_Excluir.AnimationSpeed = 0.03F;
-            this.btnEntradaNF_Excluir.BackColor = System.Drawing.Color.DimGray;
-            this.btnEntradaNF_Excluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEntradaNF_Excluir.BaseColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Excluir.BorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Excluir.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.btnEntradaNF_Excluir.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Excluir.CheckedForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Excluir.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEntradaNF_Excluir.CheckedImage")));
-            this.btnEntradaNF_Excluir.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btnEntradaNF_Excluir.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEntradaNF_Excluir.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEntradaNF_Excluir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntradaNF_Excluir.ForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Excluir.Image = global::Controle_de_Estoque.Properties.Resources.cancelar;
-            this.btnEntradaNF_Excluir.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnEntradaNF_Excluir.LineBottom = 4;
-            this.btnEntradaNF_Excluir.LineColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Excluir.Location = new System.Drawing.Point(773, 33);
-            this.btnEntradaNF_Excluir.Name = "btnEntradaNF_Excluir";
-            this.btnEntradaNF_Excluir.OnHoverBaseColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Excluir.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Excluir.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Excluir.OnHoverImage = null;
-            this.btnEntradaNF_Excluir.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEntradaNF_Excluir.OnPressedColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Excluir.Size = new System.Drawing.Size(125, 33);
-            this.btnEntradaNF_Excluir.TabIndex = 3;
-            this.btnEntradaNF_Excluir.Text = "Excluir";
-            this.btnEntradaNF_Excluir.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnEntradaNF_Excluir.Click += new System.EventHandler(this.btnEntradaNF_Excluir_Click);
-            // 
-            // btnEntradaNF_Buscar
-            // 
-            this.btnEntradaNF_Buscar.Animated = true;
-            this.btnEntradaNF_Buscar.AnimationHoverSpeed = 0.4F;
-            this.btnEntradaNF_Buscar.AnimationSpeed = 0.03F;
-            this.btnEntradaNF_Buscar.BackColor = System.Drawing.Color.DimGray;
-            this.btnEntradaNF_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEntradaNF_Buscar.BaseColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Buscar.BorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Buscar.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.btnEntradaNF_Buscar.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Buscar.CheckedForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Buscar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEntradaNF_Buscar.CheckedImage")));
-            this.btnEntradaNF_Buscar.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btnEntradaNF_Buscar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEntradaNF_Buscar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEntradaNF_Buscar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntradaNF_Buscar.ForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Buscar.Image = global::Controle_de_Estoque.Properties.Resources.lupa;
-            this.btnEntradaNF_Buscar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnEntradaNF_Buscar.LineBottom = 4;
-            this.btnEntradaNF_Buscar.LineColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Buscar.Location = new System.Drawing.Point(373, 33);
-            this.btnEntradaNF_Buscar.Name = "btnEntradaNF_Buscar";
-            this.btnEntradaNF_Buscar.OnHoverBaseColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Buscar.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Buscar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Buscar.OnHoverImage = null;
-            this.btnEntradaNF_Buscar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEntradaNF_Buscar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Buscar.Size = new System.Drawing.Size(85, 33);
-            this.btnEntradaNF_Buscar.TabIndex = 1;
-            this.btnEntradaNF_Buscar.Text = "Buscar";
-            this.btnEntradaNF_Buscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnEntradaNF_Buscar.Click += new System.EventHandler(this.EntradaNF_Buscar_Click);
-            // 
-            // btnEntradaNF_Confirmar
-            // 
-            this.btnEntradaNF_Confirmar.Animated = true;
-            this.btnEntradaNF_Confirmar.AnimationHoverSpeed = 0.4F;
-            this.btnEntradaNF_Confirmar.AnimationSpeed = 0.03F;
-            this.btnEntradaNF_Confirmar.BackColor = System.Drawing.Color.DimGray;
-            this.btnEntradaNF_Confirmar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEntradaNF_Confirmar.BaseColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Confirmar.BorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Confirmar.CheckedBaseColor = System.Drawing.Color.Gray;
-            this.btnEntradaNF_Confirmar.CheckedBorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Confirmar.CheckedForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Confirmar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEntradaNF_Confirmar.CheckedImage")));
-            this.btnEntradaNF_Confirmar.CheckedLineColor = System.Drawing.Color.DimGray;
-            this.btnEntradaNF_Confirmar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEntradaNF_Confirmar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEntradaNF_Confirmar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntradaNF_Confirmar.ForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Confirmar.Image = global::Controle_de_Estoque.Properties.Resources.ok;
-            this.btnEntradaNF_Confirmar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnEntradaNF_Confirmar.LineBottom = 4;
-            this.btnEntradaNF_Confirmar.LineColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Confirmar.Location = new System.Drawing.Point(573, 33);
-            this.btnEntradaNF_Confirmar.Name = "btnEntradaNF_Confirmar";
-            this.btnEntradaNF_Confirmar.OnHoverBaseColor = System.Drawing.Color.Transparent;
-            this.btnEntradaNF_Confirmar.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Confirmar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEntradaNF_Confirmar.OnHoverImage = null;
-            this.btnEntradaNF_Confirmar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnEntradaNF_Confirmar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnEntradaNF_Confirmar.Size = new System.Drawing.Size(125, 33);
-            this.btnEntradaNF_Confirmar.TabIndex = 2;
-            this.btnEntradaNF_Confirmar.Text = "Confirmar";
-            this.btnEntradaNF_Confirmar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnEntradaNF_Confirmar.Click += new System.EventHandler(this.EntradaNF_Confirmar_Click);
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "NF de Entrada";
@@ -368,6 +260,114 @@
             // 
             this.Column12.HeaderText = "Codigo de Barra";
             this.Column12.Name = "Column12";
+            // 
+            // btnEntradaNF_Excluir
+            // 
+            this.btnEntradaNF_Excluir.Animated = true;
+            this.btnEntradaNF_Excluir.AnimationHoverSpeed = 0.4F;
+            this.btnEntradaNF_Excluir.AnimationSpeed = 0.03F;
+            this.btnEntradaNF_Excluir.BackColor = System.Drawing.Color.DimGray;
+            this.btnEntradaNF_Excluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEntradaNF_Excluir.BaseColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Excluir.BorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Excluir.CheckedBaseColor = System.Drawing.SystemColors.GrayText;
+            this.btnEntradaNF_Excluir.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Excluir.CheckedForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Excluir.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEntradaNF_Excluir.CheckedImage")));
+            this.btnEntradaNF_Excluir.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnEntradaNF_Excluir.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEntradaNF_Excluir.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEntradaNF_Excluir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntradaNF_Excluir.ForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Excluir.Image = global::Controle_de_Estoque.Properties.Resources.cancelar;
+            this.btnEntradaNF_Excluir.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnEntradaNF_Excluir.LineBottom = 4;
+            this.btnEntradaNF_Excluir.LineColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Excluir.Location = new System.Drawing.Point(773, 33);
+            this.btnEntradaNF_Excluir.Name = "btnEntradaNF_Excluir";
+            this.btnEntradaNF_Excluir.OnHoverBaseColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Excluir.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Excluir.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Excluir.OnHoverImage = null;
+            this.btnEntradaNF_Excluir.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEntradaNF_Excluir.OnPressedColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Excluir.Size = new System.Drawing.Size(125, 33);
+            this.btnEntradaNF_Excluir.TabIndex = 4;
+            this.btnEntradaNF_Excluir.Text = "Excluir";
+            this.btnEntradaNF_Excluir.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEntradaNF_Excluir.Click += new System.EventHandler(this.btnEntradaNF_Excluir_Click);
+            // 
+            // btnEntradaNF_Buscar
+            // 
+            this.btnEntradaNF_Buscar.Animated = true;
+            this.btnEntradaNF_Buscar.AnimationHoverSpeed = 0.4F;
+            this.btnEntradaNF_Buscar.AnimationSpeed = 0.03F;
+            this.btnEntradaNF_Buscar.BackColor = System.Drawing.Color.DimGray;
+            this.btnEntradaNF_Buscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEntradaNF_Buscar.BaseColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Buscar.BorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Buscar.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btnEntradaNF_Buscar.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Buscar.CheckedForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Buscar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEntradaNF_Buscar.CheckedImage")));
+            this.btnEntradaNF_Buscar.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnEntradaNF_Buscar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEntradaNF_Buscar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEntradaNF_Buscar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntradaNF_Buscar.ForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Buscar.Image = global::Controle_de_Estoque.Properties.Resources.lupa;
+            this.btnEntradaNF_Buscar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnEntradaNF_Buscar.LineBottom = 4;
+            this.btnEntradaNF_Buscar.LineColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Buscar.Location = new System.Drawing.Point(373, 33);
+            this.btnEntradaNF_Buscar.Name = "btnEntradaNF_Buscar";
+            this.btnEntradaNF_Buscar.OnHoverBaseColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Buscar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Buscar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Buscar.OnHoverImage = null;
+            this.btnEntradaNF_Buscar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEntradaNF_Buscar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Buscar.Size = new System.Drawing.Size(85, 33);
+            this.btnEntradaNF_Buscar.TabIndex = 2;
+            this.btnEntradaNF_Buscar.Text = "Buscar";
+            this.btnEntradaNF_Buscar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnEntradaNF_Buscar.Click += new System.EventHandler(this.EntradaNF_Buscar_Click);
+            // 
+            // btnEntradaNF_Confirmar
+            // 
+            this.btnEntradaNF_Confirmar.Animated = true;
+            this.btnEntradaNF_Confirmar.AnimationHoverSpeed = 0.4F;
+            this.btnEntradaNF_Confirmar.AnimationSpeed = 0.03F;
+            this.btnEntradaNF_Confirmar.BackColor = System.Drawing.Color.DimGray;
+            this.btnEntradaNF_Confirmar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEntradaNF_Confirmar.BaseColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Confirmar.BorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Confirmar.CheckedBaseColor = System.Drawing.Color.Gray;
+            this.btnEntradaNF_Confirmar.CheckedBorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Confirmar.CheckedForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Confirmar.CheckedImage = ((System.Drawing.Image)(resources.GetObject("btnEntradaNF_Confirmar.CheckedImage")));
+            this.btnEntradaNF_Confirmar.CheckedLineColor = System.Drawing.Color.DimGray;
+            this.btnEntradaNF_Confirmar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEntradaNF_Confirmar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEntradaNF_Confirmar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntradaNF_Confirmar.ForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Confirmar.Image = global::Controle_de_Estoque.Properties.Resources.ok;
+            this.btnEntradaNF_Confirmar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnEntradaNF_Confirmar.LineBottom = 4;
+            this.btnEntradaNF_Confirmar.LineColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Confirmar.Location = new System.Drawing.Point(573, 33);
+            this.btnEntradaNF_Confirmar.Name = "btnEntradaNF_Confirmar";
+            this.btnEntradaNF_Confirmar.OnHoverBaseColor = System.Drawing.Color.Transparent;
+            this.btnEntradaNF_Confirmar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Confirmar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEntradaNF_Confirmar.OnHoverImage = null;
+            this.btnEntradaNF_Confirmar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEntradaNF_Confirmar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnEntradaNF_Confirmar.Size = new System.Drawing.Size(125, 33);
+            this.btnEntradaNF_Confirmar.TabIndex = 3;
+            this.btnEntradaNF_Confirmar.Text = "Confirmar";
+            this.btnEntradaNF_Confirmar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEntradaNF_Confirmar.Click += new System.EventHandler(this.EntradaNF_Confirmar_Click);
             // 
             // EntradaNF
             // 

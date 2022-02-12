@@ -29,7 +29,7 @@ namespace Controle_de_Estoque
             if (DadosGuardados.PassouTela == true)
             {
                 DialogResult OpcaoDoUsuario = new DialogResult();
-                OpcaoDoUsuario = MessageBox.Show("A NF Não Foi Confimanda, Deseja Salva-la!", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                OpcaoDoUsuario = MessageBox.Show("A NF Não Foi Confirmada, Deseja Salva-la?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (OpcaoDoUsuario == DialogResult.No)
                 {
                     int contmbox_NFREmovidaComSucesso = 1;
@@ -282,16 +282,6 @@ namespace Controle_de_Estoque
                                     txtEstoqueLocal.Text = itemBancoEstoque.Local;
                                     lblbarra.Text = "";
 
-                                    //if (itemBancoSaidaNF.CodDoProduto == itemBancoEstoque.CodDoProduto && itemBancoEstoque.CodDeBarra == itemBancoSaidaNF.CodDeBarra)
-                                    //{
-                                    //    txtEstoqueCodItem.Text = itemBancoEstoque.CodDoProduto.ToString();
-                                    //    txtEstoqueDescricao.Text = itemBancoEstoque.Descricao;
-                                    //    txtEstoqueCodItem.Text = itemBancoEstoque.CodDoProduto.ToString();
-                                    //    txtEstoqueLote.Text = itemBancoEstoque.Lote.ToShortDateString().Replace("/", "");
-                                    //    txtEstoqueQuantidade.Text = itemBancoEstoque.Quantidade.ToString();
-                                    //    txtEstoqueLocal.Text = itemBancoEstoque.Local;
-                                    //    lblbarra.Text = "";
-
                                     //itemBancoEstoque.Local = txtEstoqueDestino.Text;
 
                                     dgvEstoque.ColumnCount = 8;
@@ -329,14 +319,8 @@ namespace Controle_de_Estoque
                                             // break;
                                         }
                                         contmbox_EtiquejaFaturada++;
-
                                     }
-
                                 }
-
-
-
-
 
                                 //Etiqueta com saldo que já sofreu movimentação
                                 else if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == false && itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo == true && itemBancoSaidaNF.CodDoProduto == itemBancoEstoque.CodDoProduto && itemBancoEstoque.CodDeBarra == itemBancoSaidaNF.CodDeBarra)
@@ -349,15 +333,6 @@ namespace Controle_de_Estoque
                                     txtEstoqueLocal.Text = itemBancoEstoque.Local;
                                     lblbarra.Text = "";
 
-                                    //if (itemBancoSaidaNF.CodDoProduto == itemBancoEstoque.CodDoProduto && itemBancoEstoque.CodDeBarra == itemBancoSaidaNF.CodDeBarra)
-                                    //{
-                                    //    txtEstoqueCodItem.Text = itemBancoEstoque.CodDoProduto.ToString();
-                                    //    txtEstoqueDescricao.Text = itemBancoEstoque.Descricao;
-                                    //    txtEstoqueCodItem.Text = itemBancoEstoque.CodDoProduto.ToString();
-                                    //    txtEstoqueLote.Text = itemBancoEstoque.Lote.ToShortDateString().Replace("/", "");
-                                    //    txtEstoqueQuantidade.Text = itemBancoEstoque.Quantidade.ToString();
-                                    //    txtEstoqueLocal.Text = itemBancoEstoque.Local;
-                                    //    lblbarra.Text = "";
 
                                     //itemBancoEstoque.Local = txtEstoqueDestino.Text;
 
@@ -393,7 +368,6 @@ namespace Controle_de_Estoque
                                     FeitaABuscaEstoque = true;
 
 
-
                                     if (contmbox_EssaEtiquetaJaTeveSaldoFaturado == 1)
                                     {
                                         DialogResult OpcaoDoUsuario = new DialogResult();
@@ -412,84 +386,10 @@ namespace Controle_de_Estoque
                                         }
                                         contmbox_EssaEtiquetaJaTeveSaldoFaturado++;
                                     }
-
                                 }
-
-
-
-
-
-
-
-
-
                             }
                         }
-
-
-
-
-
                     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 }//);
             }

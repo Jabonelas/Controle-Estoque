@@ -99,7 +99,7 @@ namespace Controle_de_Estoque
                             itemBancoEstoque.Quantidade = itemBancoEstoque.Quantidade - Convert.ToDouble(txtSaidaNF_Quantidade.Text);
 
                             DadosGuardados.listaBancoSaidaNF.Add(new BancoSaidaNF(Convert.ToInt32(txtSaidaNF_SaidaNF.Text), itemBancoEstoque.CodDoProduto, itemBancoEstoque.Descricao, Convert.ToDouble(txtSaidaNF_Quantidade.Text),
-                           itemBancoEstoque.UnidadeDeMedia, txtSaidaNF_Obs.Text, itemBancoEstoque.Valor, DateTime.Today, "FATURADO", itemBancoEstoque.CodDeBarra, itemBancoEstoque.Lote, false));
+                           itemBancoEstoque.UnidadeDeMedia, txtSaidaNF_Obs.Text, (itemBancoEstoque.Valor/ Convert.ToDouble(txtSaidaNF_Quantidade.Text)), DateTime.Today, "FATURADO", itemBancoEstoque.CodDeBarra, itemBancoEstoque.Lote, false));
 
                             dgvSaidaNF.Rows.Clear();
                             foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
@@ -110,7 +110,8 @@ namespace Controle_de_Estoque
 
                                     var rows = new List<string[]>();
                                     string[] row1 = new string[] { itemBancoSaidaNF.NotaFiscalSaida.ToString("D6"), itemBancoSaidaNF.CodDoProduto.ToString(),
-                                    itemBancoSaidaNF.Descricao, itemBancoSaidaNF.Quantidade.ToString (),itemBancoSaidaNF.UnidadeDeMedia,itemBancoSaidaNF.Observacao,("R$ "+itemBancoSaidaNF.Valor.ToString("N2")),itemBancoSaidaNF.Emissao.ToShortDateString() };
+                                    itemBancoSaidaNF.Descricao, itemBancoSaidaNF.Quantidade.ToString (),itemBancoSaidaNF.UnidadeDeMedia,itemBancoSaidaNF.Observacao,
+                                        ("R$ "+itemBancoSaidaNF.Valor.ToString("N2")),itemBancoSaidaNF.Emissao.ToShortDateString() };
                                     rows.Add(row1);
 
                                     foreach (string[] item in rows)
@@ -209,6 +210,7 @@ namespace Controle_de_Estoque
 
                             itemBancoEstoque.Local = "PRODUÇÃO";
                             itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo = false;
+                            itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo = false;
                             contmbox_NFRemovidaComSucesso++;
 
                             if (contmbox_NFRemovidaComSucesso == 2)
@@ -314,8 +316,7 @@ namespace Controle_de_Estoque
             }
         }
 
+
         #endregion
-
-
     }
 }

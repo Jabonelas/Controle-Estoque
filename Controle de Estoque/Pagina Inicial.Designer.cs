@@ -37,7 +37,6 @@
             this.gunaPanel2 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel2 = new Guna.UI.WinForms.GunaLabel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.gunaPanel3 = new Guna.UI.WinForms.GunaPanel();
             this.gunaLabel3 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
@@ -49,6 +48,7 @@
             this.btnBuscar = new Guna.UI.WinForms.GunaAdvenceButton();
             this.btnEstoque = new Guna.UI.WinForms.GunaAdvenceButton();
             this.gunaCirclePictureBox1 = new Guna.UI.WinForms.GunaCirclePictureBox();
+            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.gunaPanel1.SuspendLayout();
             this.gunaPanel2.SuspendLayout();
             this.gunaPanel3.SuspendLayout();
@@ -129,10 +129,6 @@
             // 
             this.guna2DragControl1.TargetControl = this;
             // 
-            // guna2DragControl2
-            // 
-            this.guna2DragControl2.TargetControl = this.gunaPanel1;
-            // 
             // gunaPanel3
             // 
             this.gunaPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -197,6 +193,7 @@
             // 
             // TelaInicial
             // 
+            this.TelaInicial.BackgroundImage = global::Controle_de_Estoque.Properties.Resources.Imagem_Inicial1;
             this.TelaInicial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TelaInicial.Location = new System.Drawing.Point(9, 149);
             this.TelaInicial.Name = "TelaInicial";
@@ -359,6 +356,10 @@
             this.gunaCirclePictureBox1.TabStop = false;
             this.gunaCirclePictureBox1.UseTransfarantBackground = false;
             // 
+            // guna2DragControl2
+            // 
+            this.guna2DragControl2.TargetControl = this.gunaPanel1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,7 +404,6 @@
         private Guna.UI.WinForms.GunaAdvenceButton btnSaidaNF;
         private Guna.UI.WinForms.GunaAdvenceButton btnEntradaNF;
         private Guna.UI.WinForms.GunaAdvenceButton btnBuscar;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
         private Guna.UI.WinForms.GunaLabel gunaLabel1;
         private Guna.UI.WinForms.GunaLabel gunaLabel2;
         private Guna.UI.WinForms.GunaPanel gunaPanel3;
@@ -412,6 +412,7 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaLabel gunaLabel5;
         private Guna.UI.WinForms.GunaLabel gunaLabel_name1;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
     }
 }
 

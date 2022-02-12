@@ -29,7 +29,7 @@ namespace Controle_de_Estoque
             if (DadosGuardados.PassouTela == true)
             {
                 DialogResult OpcaoDoUsuario = new DialogResult();
-                OpcaoDoUsuario = MessageBox.Show("A NF Não Foi Confimanda, Deseja Salva-la!", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                OpcaoDoUsuario = MessageBox.Show("A NF Não Foi Confirmada, Deseja Salva-la?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (OpcaoDoUsuario == DialogResult.No)
                 {
                     int contmbox_NFRemovidaComSucesso = 1;
@@ -138,7 +138,6 @@ namespace Controle_de_Estoque
 
 
         #endregion
-
     }
 }
 

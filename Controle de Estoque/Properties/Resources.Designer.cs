@@ -103,6 +103,16 @@ namespace Controle_de_Estoque.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Imagem_Inicial1 {
+            get {
+                object obj = ResourceManager.GetObject("Imagem Inicial1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lixeira {
             get {
                 object obj = ResourceManager.GetObject("lixeira", resourceCulture);

@@ -36,7 +36,7 @@ namespace Controle_de_Estoque
             }
             else
             {
-                foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                foreach (BancoEstoque itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                 {
                     //DadosGuardados.listaBancoEstoque.ForEach(x =>
                     //{
@@ -80,7 +80,7 @@ namespace Controle_de_Estoque
             {
                 DadosGuardados.listaBancoEstoque.OrderBy(d => d.Lote);
 
-                foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                foreach (BancoEstoque itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                 {
 
                     //DadosGuardados.listaBancoEstoque.ForEach(x =>
@@ -99,10 +99,10 @@ namespace Controle_de_Estoque
                             itemBancoEstoque.Quantidade = itemBancoEstoque.Quantidade - Convert.ToDouble(txtSaidaNF_Quantidade.Text);
 
                             DadosGuardados.listaBancoSaidaNF.Add(new BancoSaidaNF(Convert.ToInt32(txtSaidaNF_SaidaNF.Text), itemBancoEstoque.CodDoProduto, itemBancoEstoque.Descricao, Convert.ToDouble(txtSaidaNF_Quantidade.Text),
-                           itemBancoEstoque.UnidadeDeMedia, txtSaidaNF_Obs.Text, (itemBancoEstoque.Valor/ Convert.ToDouble(txtSaidaNF_Quantidade.Text)), DateTime.Today, "FATURADO", itemBancoEstoque.CodDeBarra, itemBancoEstoque.Lote, false));
+                           itemBancoEstoque.UnidadeDeMedia, txtSaidaNF_Obs.Text, (itemBancoEstoque.Valor / Convert.ToDouble(txtSaidaNF_Quantidade.Text)), DateTime.Today, "FATURADO", itemBancoEstoque.CodDeBarra, itemBancoEstoque.Lote, false));
 
                             dgvSaidaNF.Rows.Clear();
-                            foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
+                            foreach (BancoSaidaNF itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
                                 if (txtSaidaNF_SaidaNF.Text == itemBancoSaidaNF.NotaFiscalSaida.ToString())
                                 {
@@ -194,11 +194,11 @@ namespace Controle_de_Estoque
         {
             int contmbox_NFRemovidaComSucesso = 1;
 
-            foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+            foreach (BancoEstoque itemBancoEstoque in DadosGuardados.listaBancoEstoque)
             {
                 if (itemBancoEstoque.TesteParaVerificarSeFoiSalvaNotaFiscalSaida == true)
                 {
-                    foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
+                    foreach (BancoSaidaNF itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                     {
                         if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == txtSaidaNF_SaidaNF.Text && itemBancoSaidaNF.TesteParaSaberSeFoiCanceladaSaidaNF == false)
                         {
@@ -253,10 +253,10 @@ namespace Controle_de_Estoque
             }
             else
             {
-                DadosGuardados.listaBancoSaidaNF.ForEach(x =>
+                DadosGuardados.listaBancoSaidaNF.ForEach(itemBancoSaidaNF =>
                 {
 
-                    if (x.NotaFiscalSaida.ToString() == txtSaidaNF_SaidaNF.Text)
+                    if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == txtSaidaNF_SaidaNF.Text)
                     {
                         txtSaidaNF_CodItem.Text = "";
                         txtSaidaNF_Descricao.Text = "";
@@ -268,8 +268,8 @@ namespace Controle_de_Estoque
 
 
                         var rows = new List<string[]>();
-                        string[] row1 = new string[] { x.NotaFiscalSaida.ToString("D6"), x.CodDoProduto.ToString(),
-                        x.Descricao, x.Quantidade.ToString (),x.UnidadeDeMedia,x.Local,x.Lote.ToShortDateString().Replace("/",""),x.CodDeBarra.ToString("D10") };
+                        string[] row1 = new string[] { itemBancoSaidaNF.NotaFiscalSaida.ToString("D6"), itemBancoSaidaNF.CodDoProduto.ToString(),
+                        itemBancoSaidaNF.Descricao, itemBancoSaidaNF.Quantidade.ToString (),itemBancoSaidaNF.UnidadeDeMedia,itemBancoSaidaNF.Local,itemBancoSaidaNF.Lote.ToShortDateString().Replace("/",""),itemBancoSaidaNF.CodDeBarra.ToString("D10") };
                         rows.Add(row1);
 
                         foreach (string[] item in rows)

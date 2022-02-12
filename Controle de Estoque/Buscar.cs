@@ -34,11 +34,11 @@ namespace Controle_de_Estoque
                 {
                     int contmbox_NFRemovidaComSucesso = 1;
 
-                    foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                    foreach (BancoEstoque itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
                         if (itemBancoEstoque.TesteParaVerificarSeFoiSalvaNotaFiscalSaida == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == false)
                         {
-                            foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
+                            foreach (BancoSaidaNF itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
                                 if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == DadosGuardados.NotaFiscalSaida.ToString() && itemBancoSaidaNF.TesteParaSaberSeFoiCanceladaSaidaNF == false)
                                 {
@@ -61,7 +61,7 @@ namespace Controle_de_Estoque
                                 break;
                             }
                         }
-                        
+
                     }
                     DadosGuardados.contParaGerarNotaFiscalDeSaida = 1;
                     DadosGuardados.NotaFiscalSaida++;

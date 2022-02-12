@@ -193,7 +193,7 @@
             // 
             // TelaInicial
             // 
-            this.TelaInicial.BackgroundImage = global::Controle_de_Estoque.Properties.Resources.Imagem_Inicial1;
+            this.TelaInicial.BackgroundImage = global::Controle_de_Estoque.Properties.Resources.Imagem_Inicial_copiar;
             this.TelaInicial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TelaInicial.Location = new System.Drawing.Point(9, 149);
             this.TelaInicial.Name = "TelaInicial";

@@ -34,11 +34,11 @@ namespace Controle_de_Estoque
                 {
                     int contmbox_NFREmovidaComSucesso = 1;
 
-                    foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                    foreach (BancoEstoque itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                     {
                         if (itemBancoEstoque.TesteParaVerificarSeFoiSalvaNotaFiscalSaida == true && itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == false)
                         {
-                            foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
+                            foreach (BancoSaidaNF itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
                                 if (itemBancoSaidaNF.NotaFiscalSaida.ToString() == DadosGuardados.NotaFiscalSaida.ToString() && itemBancoSaidaNF.TesteParaSaberSeFoiCanceladaSaidaNF == false)
                                 {
@@ -96,13 +96,13 @@ namespace Controle_de_Estoque
             else
             {
                 //DadosGuardados.listaBancoEstoque.ForEach(x =>
-                foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                foreach (BancoEstoque itemBancoEstoque in DadosGuardados.listaBancoEstoque)
 
                 {
                     if (itemBancoEstoque.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text && itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo == false)
                     {
 
-                        foreach (var itemBancoEstoque2 in DadosGuardados.listaBancoEstoque)
+                        foreach (BancoEstoque itemBancoEstoque2 in DadosGuardados.listaBancoEstoque)
                         {
                             if (itemBancoEstoque2.TesteParaSaberSeFoiFaturadoZerandoSaldo == false)
                             {
@@ -247,7 +247,7 @@ namespace Controle_de_Estoque
                 DadosGuardados.listaBancoEstoque.OrderBy(d => d.Lote);
 
                 //DadosGuardados.listaBancoEstoque.ForEach(x =>
-                foreach (var itemBancoEstoque in DadosGuardados.listaBancoEstoque)
+                foreach (BancoEstoque itemBancoEstoque in DadosGuardados.listaBancoEstoque)
                 {
                     if (itemBancoEstoque.CodDeBarra.ToString("D10") == txtEstoqueCodBarra.Text)
                     {
@@ -268,10 +268,10 @@ namespace Controle_de_Estoque
                         else
                         {
 
-                            foreach (var itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
+                            foreach (BancoSaidaNF itemBancoSaidaNF in DadosGuardados.listaBancoSaidaNF)
                             {
                                 //Etiqueta com saldo totalmente consumido
-                                if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == true && itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo == true&& itemBancoSaidaNF.CodDoProduto == itemBancoEstoque.CodDoProduto && itemBancoEstoque.CodDeBarra == itemBancoSaidaNF.CodDeBarra)
+                                if (itemBancoEstoque.TesteParaSaberSeFoiFaturadoZerandoSaldo == true && itemBancoEstoque.TesteParaSaberSeHouveMovimentaçãoDoSaldo == true && itemBancoSaidaNF.CodDoProduto == itemBancoEstoque.CodDoProduto && itemBancoEstoque.CodDeBarra == itemBancoSaidaNF.CodDeBarra)
                                 {
 
                                     txtEstoqueCodItem.Text = itemBancoEstoque.CodDoProduto.ToString();
@@ -297,8 +297,6 @@ namespace Controle_de_Estoque
                                     }
                                     lblbarra.Text = "";
                                     lblDestino.Text = "";
-
-                                    // }
 
                                     FeitaABuscaEstoque = true;
 
@@ -349,7 +347,7 @@ namespace Controle_de_Estoque
                                         itemBancoEstoque.Lote.ToShortDateString().Replace("/",""),itemBancoEstoque.CodDeBarra.ToString("D10") };
                                         rows.Add(row1);
                                     }
-                                   ///linha do bando de saida de NF
+                                    ///linha do bando de saida de NF
                                     string[] row2 = new string[] { itemBancoEstoque.NotaFiscal.ToString("D6"), itemBancoSaidaNF.NotaFiscalSaida.ToString("D6"),
                                         itemBancoEstoque.CodDoProduto.ToString(),itemBancoEstoque.Descricao, itemBancoSaidaNF.Quantidade.ToString(),
                                         itemBancoEstoque.UnidadeDeMedia,itemBancoSaidaNF.Local,itemBancoEstoque.Lote.ToShortDateString().Replace("/",""),
@@ -363,10 +361,7 @@ namespace Controle_de_Estoque
                                     lblbarra.Text = "";
                                     lblDestino.Text = "";
 
-                                    //}
-
                                     FeitaABuscaEstoque = true;
-
 
                                     if (contmbox_EssaEtiquetaJaTeveSaldoFaturado == 1)
                                     {
